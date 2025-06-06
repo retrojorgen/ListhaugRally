@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://cx8q7hedgdcqv"]
+
+[ext_resource type="Script" uid="uid://cvtj10iejq4k8" path="res://scenes/lokale.gd" id="1_3yxuf"]
+[ext_resource type="Texture2D" uid="uid://cmjjg84ajogrt" path="res://assets/sprites/waffle-character.png" id="2_3yxuf"]
+[ext_resource type="Texture2D" uid="uid://h6tgrlxqbcqk" path="res://assets/sprites/stemmer-animasjon.png" id="3_jflxr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yxuf"]
+size = Vector2(56.3333, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrhn5"]
+atlas = ExtResource("3_jflxr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my7n2"]
+atlas = ExtResource("3_jflxr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp8ca"]
+atlas = ExtResource("3_jflxr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lw5n"]
+atlas = ExtResource("3_jflxr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u32qk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrhn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my7n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp8ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lw5n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lokale" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_3yxuf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3yxuf")
+region_enabled = true
+region_rect = Rect2(0, 181, 65, 41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.166667, -1.33333)
+shape = SubResource("RectangleShape2D_3yxuf")
+
+[node name="characters" type="Node2D" parent="."]
+
+[node name="character1" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(-14.3333, 4)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character2" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(-6.33333, 4.33333)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character3" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(2.33333, 4.33333)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character4" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(11, 4.33333)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character5" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(-11.3333, 8)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character6" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(-4, 8.33333)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character7" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(4.66666, 8.33333)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character8" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(14.3333, 8)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character9" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(-1, 11.6667)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[node name="character10" type="AnimatedSprite2D" parent="characters"]
+visible = false
+position = Vector2(8.33333, 11.3333)
+sprite_frames = SubResource("SpriteFrames_u32qk")
+autoplay = "default"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

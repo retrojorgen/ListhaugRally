@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://di5183vsk8ukl"]
+
+[ext_resource type="AudioStream" uid="uid://dhees137s2f83" path="res://assets/sounds/jump.wav" id="1_4v5pq"]
+[ext_resource type="Script" uid="uid://d3tt284sx04ih" path="res://scenes/sounds.gd" id="1_p1d1g"]
+[ext_resource type="AudioStream" uid="uid://clsiu00ryw2ln" path="res://assets/sounds/explosion.wav" id="2_3iyv6"]
+[ext_resource type="AudioStream" uid="uid://c6mryk7yfy4eh" path="res://assets/sounds/power_up.wav" id="3_rl5xe"]
+[ext_resource type="AudioStream" uid="uid://cag655nsmsf45" path="res://assets/sounds/hurt.wav" id="4_p1d1g"]
+[ext_resource type="AudioStream" uid="uid://cep7kb85dgp72" path="res://assets/sounds/coin.wav" id="5_qpfqm"]
+[ext_resource type="AudioStream" uid="uid://cewp0p2svgijo" path="res://assets/sounds/listhaug-bil.wav" id="7_p1d1g"]
+[ext_resource type="AudioStream" uid="uid://cwy850w66we1i" path="res://assets/sounds/listhaug-stemmer.wav" id="8_qpfqm"]
+
+[node name="Sounds" type="Node2D"]
+script = ExtResource("1_p1d1g")
+
+[node name="jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4v5pq")
+bus = &"sound effects"
+
+[node name="explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3iyv6")
+bus = &"sound effects"
+
+[node name="powerup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rl5xe")
+pitch_scale = 0.64
+bus = &"sound effects"
+
+[node name="hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_p1d1g")
+bus = &"sound effects"
+
+[node name="coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qpfqm")
+bus = &"sound effects"
+
+[node name="listhaugBil" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_p1d1g")
+bus = &"sound effects"
+
+[node name="listhaugStemmer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qpfqm")
+bus = &"sound effects"

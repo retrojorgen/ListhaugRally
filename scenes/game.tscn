@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2rbb7fg0e73y"]
+
+[ext_resource type="Script" uid="uid://du2ensvbthanw" path="res://game.gd" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://cd3qsevhtif3y" path="res://assets/sprites/level1-background.png" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bgxyohufvb5ej" path="res://scenes/player.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://tgobscv1eu61" path="res://scenes/score_keeper.tscn" id="5_iywne"]
+[ext_resource type="AudioStream" uid="uid://bvti7sq2too8j" path="res://assets/music/maniac_-_rockit.mp3" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://s176vt7i1ra4" path="res://scenes/scene_items_handler.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://duyfjpkuqnp0c" path="res://scenes/toll_station.tscn" id="7_u5sy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(20, 392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(1558, 5)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_yqjtg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+scale = Vector2(3, 3)
+texture = ExtResource("2_p57ef")
+region_rect = Rect2(1, -0.25, 959, 409.25)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(1920, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("2_p57ef")
+region_rect = Rect2(1, -0.25, 959, 409.25)
+
+[node name="StopItems" type="Area2D" parent="."]
+position = Vector2(-530, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopItems"]
+position = Vector2(0, 68)
+shape = SubResource("RectangleShape2D_iywne")
+
+[node name="ScoreKeeper" parent="." instance=ExtResource("5_iywne")]
+
+[node name="Player" parent="." instance=ExtResource("4_lbhrr")]
+
+[node name="StopItemsRight" type="Area2D" parent="."]
+position = Vector2(985, 72)
+
+[node name="RightWall" type="CollisionShape2D" parent="StopItemsRight"]
+position = Vector2(2, -6)
+shape = SubResource("RectangleShape2D_iywne")
+
+[node name="AboveWall" type="CollisionShape2D" parent="StopItemsRight"]
+position = Vector2(-749, -242)
+shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="BelowWall" type="CollisionShape2D" parent="StopItemsRight"]
+position = Vector2(-751, 223.5)
+shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_p57ef")
+bus = &"background"
+
+[node name="SceneItemsHandler" parent="." instance=ExtResource("6_p57ef")]
+
+[node name="TollStation" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(1403, 33)

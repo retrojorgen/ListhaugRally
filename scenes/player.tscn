@@ -1,0 +1,125 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgxyohufvb5ej"]
+
+[ext_resource type="Script" uid="uid://bguwbcr1j2ns6" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://chi7u3f81xyoh" path="res://assets/sprites/main-character.png" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bwjpruq5418py" path="res://assets/sprites/bil-animasjon.png" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(88.5, 58.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": true,
+"name": &"withVoters",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_g2els"]
+_data = [Vector2(0, 0.506012), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_qhqgy"]
+_data = [Vector2(0.231638, 0.974988), 0.0, 0.0, 0, 0, Vector2(1, 0.146465), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dqkch"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.996667)
+colors = PackedColorArray(1, 0.721569, 0, 1, 0.882353, 0, 0.0588235, 1)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.75, 14.75)
+shape = SubResource("RectangleShape2D_dqkch")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 4
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+animation = &"withVoters"
+autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 28)
+scale = Vector2(3, 3)
+texture = ExtResource("2_dqkch")
+region_enabled = true
+region_rect = Rect2(1, 46, 31, 22)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-44, 18)
+amount = 16
+speed_scale = 0.8
+explosiveness = 0.1
+randomness = 0.54
+use_fixed_seed = true
+seed = 394520468
+emission_shape = 1
+emission_sphere_radius = 0.02
+direction = Vector2(10, -200)
+spread = 13.18
+gravity = Vector2(-100, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 20.0
+angular_velocity_min = 100.0
+angular_velocity_max = 200.0
+scale_amount_min = 8.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_g2els")
+color = Color(0.720467, 0.720468, 0.720467, 1)
+hue_variation_min = -1.0
+hue_variation_max = 0.48
+
+[node name="explosion" type="CPUParticles2D" parent="."]
+z_index = 6
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 80)
+initial_velocity_min = 60.0
+initial_velocity_max = 141.41
+angular_velocity_max = 218.18
+scale_amount_min = 10.0
+scale_amount_max = 14.0
+scale_amount_curve = SubResource("Curve_qhqgy")
+color_ramp = SubResource("Gradient_dqkch")

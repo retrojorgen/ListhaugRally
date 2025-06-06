@@ -1,0 +1,22 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bx0j1piasnc2u"]
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_j3pel"]
+resource_name = "Phaser"
+rate_hz = 1.16
+
+[resource]
+bus/0/send = &"background"
+bus/1/name = &"background"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -80.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectPhaser_j3pel")
+bus/1/effect/0/enabled = false
+bus/2/name = &"sound effects"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -80.0
+bus/2/send = &"Master"

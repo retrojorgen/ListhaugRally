@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuvacdnr5485b"]
+
+[ext_resource type="Script" uid="uid://dmm3xu7dl0yob" path="res://scripts/powerup.gd" id="1_ih772"]
+[ext_resource type="Texture2D" uid="uid://cq3e0hp4fj08n" path="res://assets/sprites/fruit.png" id="2_406cw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pufsy"]
+size = Vector2(6.33333, 7)
+
+[node name="powerup" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_ih772")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-28, 20)
+texture = ExtResource("2_406cw")
+offset = Vector2(28, -20)
+region_enabled = true
+region_rect = Rect2(19, 48, 11, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_pufsy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
