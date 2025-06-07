@@ -1,56 +1,51 @@
 extends Node2D
-var GameScene;
-@onready var spawn_timer: Timer = $SpawnTimer
-@onready var character_timer: Timer = $CharacterTimer
-@onready var locale_timer: Timer = $LocaleTimer
-@onready var powerup_timer: Timer = $PowerupTimer
+#var GameScene;
 
+var bureaucrat = preload("res://scenes/obstacle.tscn")
+var voter = preload("res://scenes/character.tscn")
+var powerup = preload("res://scenes/powerup.tscn")
+var hole = preload("res://scenes/powerup.tscn")
+var toll_station = preload("res://scenes/toll_station.tscn")
+var locale = preload("res://scenes/lokale.tscn")
+var electric_car = preload("res://scenes/electric_car.tscn")
+
+
+var initial_sequence = [
+	{ "delay": 1.0, "action": () => spawner(0, voter) },
+	{ "delay": 1.5, "action": () => spawn_obstacle() },
+	{ "delay": 2.0, "action": () => spawn_powerup() }
+]
+
+var post_60_seconds_sequence = [
+	{ "delay": 1.0, "action": () => spawn_hole() },
+	{ "delay": 0.5, "action": () => spawn_hole() },
+	{ "delay": 0.5, "action": () => spawn_hole() },
+	{ "delay": 0.5, "action": () => spawn_hole() },
+	{ "delay": 1.0, "action": () => spawn_electricCar() },
+	{ "delay": 0.5, "action": () => spawn_electricCar() },
+	{ "delay": 1.0, "action": () => spawn_hole() },
+	{ "delay": 0.5, "action": () => spawn_hole() },
+	{ "delay": 0.5, "action": () => spawn_hole() },
+	{ "delay": 0.5, "action": () => spawn_hole() }
+]
+
+#Vector2(Global.screen_size.x + 100, randomYPosOnTrack());
+
+
+# the point of this is to 
 
 
 
 func init():
-	spawn_timer.timeout.connect(spawn_obstacle)
-	character_timer.timeout.connect(spawn_character)
-	locale_timer.timeout.connect(spawn_locale)
-	powerup_timer.timeout.connect(spawn_powerup)
 	GameScene = get_tree().current_scene;
 #generate random position of y between top and bottom part of track
 func randomYPosOnTrack():
 		return randi_range(Global.TOP_OF_TRACK, Global.BOTTOM_OF_TRACK)
-		
-
-func spawn_character():
-	#print("character")
-	var character = preload("res://scenes/character.tscn").instantiate()
 	
-	character.global_position = Vector2(Global.screen_size.x + 60, randomYPosOnTrack());
-	character.character.connect(GameScene._on_character_collected)
-	add_child(character)
-	
-	
-	
-func spawn_powerup():
-	#print("character")
-	var powerup = preload("res://scenes/powerup.tscn").instantiate()
-	
-	powerup.global_position = Vector2(Global.screen_size.x + 60, randomYPosOnTrack());
-	powerup.powerup.connect(GameScene._on_powerup_collision)
-	add_child(powerup)
-
-func spawn_locale():
-	
-	var locale = preload("res://scenes/lokale.tscn").instantiate()
-	locale.global_position = Vector2(Global.screen_size.x + 40, Global.TOP_OF_TRACK -40);
-	locale.lokale.connect(GameScene._on_locale_collision)
-	add_child(locale)
-	
-func spawn_obstacle():
-	#print("spawning obstacle")
-	var obstacle = preload("res://scenes/obstacle.tscn").instantiate()
-	
-	
-	obstacle.global_position = Vector2(Global.screen_size.x + 100, randomYPosOnTrack());
-	obstacle.obstacle.connect(GameScene._on_obstacle_collision)
-	#obstacle.global_position = Vector2(get_viewport_rect().size.x + 100, randf_range(200, 400))
-	add_child(obstacle)
-	#print("Obstacle added to:", obstacle.get_parent())
+func spawner(y := 0, scene):
+	var x = Global.screen_size.x + 100
+	if y == 0:
+		randomYPosOnTrack()
+	var item = scene.instantiate()
+	item.global_position = Vector2(x,y)
+	add_child(item)

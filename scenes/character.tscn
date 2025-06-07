@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckyewc3jditd0"]
+[gd_scene load_steps=15 format=3 uid="uid://ckyewc3jditd0"]
 
 [ext_resource type="Script" uid="uid://d1sqwbkgkwqom" path="res://scenes/character.gd" id="1_rkhd4"]
 [ext_resource type="Texture2D" uid="uid://h6tgrlxqbcqk" path="res://assets/sprites/stemmer-animasjon.png" id="2_rkhd4"]
@@ -44,7 +44,7 @@ size = Vector2(9, 16)
 
 [sub_resource type="Animation" id="Animation_rkhd4"]
 resource_name = "float"
-length = 10.0
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,19 +52,19 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 1.74533]
+"values": [0.0, 0.490438, 1.74533]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-1, 1), Vector2(1e-05, 1e-05)]
@@ -76,10 +76,10 @@ tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.966667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, -1.33333), Vector2(20, -20)]
+"values": [Vector2(-1, -1.33333), Vector2(10.6667, -11.3333), Vector2(20, -20)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -88,7 +88,31 @@ tracks/3/path = NodePath(".:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.97),
+"times": PackedFloat32Array(0, 0.47),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -144,6 +168,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_my7n2"]
 resource_name = "new_animation"
@@ -155,6 +203,15 @@ _data = {
 &"new_animation": SubResource("Animation_my7n2")
 }
 
+[sub_resource type="Curve" id="Curve_rkhd4"]
+_data = [Vector2(0.231638, 0.974988), 0.0, 0.0, 0, 0, Vector2(1, 0.146465), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lrhn5"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.996667)
+colors = PackedColorArray(1, 0, 0, 1, 0.20976, 0, 0.0592834, 1)
+
 [node name="Character" type="Area2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_rkhd4")
@@ -163,7 +220,7 @@ script = ExtResource("1_rkhd4")
 position = Vector2(-1, -1.33333)
 sprite_frames = SubResource("SpriteFrames_2cgup")
 autoplay = "default"
-frame_progress = 0.674714
+frame_progress = 0.443668
 centered = false
 offset = Vector2(-16, -20)
 flip_h = true
@@ -177,6 +234,24 @@ root_node = NodePath("../AnimatedSprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_my7n2")
 }
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(4.33333, -12.6667)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 80)
+initial_velocity_max = 44.44
+angular_velocity_max = 218.18
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_rkhd4")
+color_ramp = SubResource("Gradient_lrhn5")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

@@ -1,7 +1,7 @@
 extends Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-@export var speed :=200.0
+#@export var speed :=200.0
 var float_after_character_ready = false
 signal character
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and !float_after_character_ready:
 		emit_signal("character")
-		body.itemHit()
+		body.voterCollision()
 		queue_free()
 	#pass # Replace with function body.
 
@@ -21,7 +21,6 @@ func _on_body_entered(body: Node2D) -> void:
 func float():
 	print("hello")
 	collision_shape_2d.disabled = false
-	$AnimationPlayer.play("float")
 	$AnimationPlayer.play("float")
 	
 	

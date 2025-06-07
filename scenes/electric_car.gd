@@ -8,33 +8,17 @@ var can_damage = true
 signal obstacle
 
 func _process(delta):
-	global_position.x -= (Global.speed + 100) * delta
-
-
-
-
-
-
-#func _on_area_entered(area: Area2D):
-#	print("yo")
-#	if area.name == "StopItems":
-#		queue_free()
-#		
-#func _on_body_entered(body):
-#	if body.name == "Player":
-#		print("Collision with player!")
-#		queue_free()  # or trigger game over
+	global_position.x -= (Global.speed + 200) * delta
 
 
 func _on_body_entered(body: Node2D) -> void:
-	
-	if body.name == "Player" and can_damage:		
+	if body.name == "Player" and can_damage and !Global.is_invincible:
 		body.hit()
+		hit()
 		emit_signal("obstacle")
-	#print(body.name)
-		#queue_free()  # or trigger game over
 
 # hits the end of the screen
+# waffleattack
 func _on_area_entered(area: Area2D) -> void:
 	#print(area.name)
 	if area.name.contains("waffle") and can_damage:
@@ -48,8 +32,9 @@ func hit():
 	# Gjør bilen hvit
 	if !collision_shape_2d.disabled:
 		can_damage = false
-		cpu_particles_2d.emitting = true
+		cpu_particles_2d.emitting = false
 		collision_shape_2d.disabled = true
+		$explosion.emitting = true
 		obstacle_sprite.modulate = Color(3, 3, 3)
 	
 		# Beveg litt bakover

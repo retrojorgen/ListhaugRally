@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://geqkh5trrxmw"]
+
+[ext_resource type="Script" uid="uid://cxw1qniyj5aqo" path="res://scenes/hole.gd" id="1_iyxdx"]
+[ext_resource type="Texture2D" uid="uid://cmjjg84ajogrt" path="res://assets/sprites/waffle-character.png" id="1_lerre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyxdx"]
+size = Vector2(16.6667, 15.6667)
+
+[node name="hole" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_iyxdx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lerre")
+region_enabled = true
+region_rect = Rect2(65, 184, 34, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.66667, 2.66667)
+shape = SubResource("RectangleShape2D_iyxdx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

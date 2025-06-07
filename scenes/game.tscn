@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2rbb7fg0e73y"]
+[gd_scene load_steps=9 format=3 uid="uid://b2rbb7fg0e73y"]
 
 [ext_resource type="Script" uid="uid://du2ensvbthanw" path="res://game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cd3qsevhtif3y" path="res://assets/sprites/level1-background.png" id="2_p57ef"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://tgobscv1eu61" path="res://scenes/score_keeper.tscn" id="5_iywne"]
 [ext_resource type="AudioStream" uid="uid://bvti7sq2too8j" path="res://assets/music/maniac_-_rockit.mp3" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://s176vt7i1ra4" path="res://scenes/scene_items_handler.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://duyfjpkuqnp0c" path="res://scenes/toll_station.tscn" id="7_u5sy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(20, 392)
@@ -68,6 +67,3 @@ stream = ExtResource("5_p57ef")
 bus = &"background"
 
 [node name="SceneItemsHandler" parent="." instance=ExtResource("6_p57ef")]
-
-[node name="TollStation" parent="." instance=ExtResource("7_u5sy4")]
-position = Vector2(1403, 33)

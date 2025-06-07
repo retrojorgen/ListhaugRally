@@ -74,7 +74,7 @@ position = Vector2(-4, -3)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_bcfqo")
 autoplay = "default"
-frame_progress = 0.595691
+frame_progress = 0.637555
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false

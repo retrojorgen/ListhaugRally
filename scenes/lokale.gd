@@ -31,10 +31,11 @@ func _on_body_entered(body: Node2D) -> void:
 	#player wants to deliver voters
 	if body.name == "Player":
 		itemHit()
-		body.defaultAnimation()
-		#print(Global.voters)
-		Sounds.listhaug_stemmer.play()
 		showCharacters(Global.voters)
+		Sounds.listhaug_stemmer.play()
+		#print(Global.voters)
+		#body.defaultAnimation()
+		body.localeCollision()
 		emit_signal("lokale")
 		
 
