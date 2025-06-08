@@ -3,6 +3,7 @@ extends Node2D
 
 var is_invincible := false
 #global scripts
+var previousSpeed := 400
 var speed := 400
 var lives := 10;
 var voters := 0;

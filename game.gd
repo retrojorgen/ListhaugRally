@@ -1,4 +1,6 @@
 extends Node2D
+# The main purpose of this file is to be the only place that can update the global game data
+
 
 @onready var parallax_background: ParallaxBackground = $ParallaxBackground
 @onready var player: CharacterBody2D = $Player
@@ -15,27 +17,53 @@ extends Node2D
 
 signal values
 
+# if an enemy causes the player to lose a voter
 func decreaseVoters():
 	if Global.voters == 0:
-		stopGame()
+		return
 	else: 
 		if Global.voters > 0:
 			Global.voters -= 1
-	emit_signal("values")	
-		
+	emit_signal("values")
+
+# if the user picks up a voter		
 func increaseVoters():
 	if Global.voters < 10:
 		Global.voters += 1
-	emit_signal("values")			
+	emit_signal("values")
 
+# if for instance an enemy only causes the player to lose all voters (currently only toll booth)
+func loseVoters():
+	Global.voters = 0
+	emit_signal("values")
+
+func decreaseLife():
+	#make sure the voters are set to 0. This should already be a fact most of the times.
+	Global.voters = 0
+	Global.lives -= 1;
+	emit_signal("values")
+	if Global.lives == 0:
+		gameOver()
+
+
+# when the player has no lives left the game should stop, and we should show a game over screen
+func gameOver():
+	#stop the game
+	print("game over")
+	emit_signal("values")
+
+# Stop the game by pausing the speed
 func stopGame():
+	Global.previousSpeed = Global.speed
 	Global.speed = 0
 	emit_signal("values")
-		
+
+# Start the game by setting the speed back to what it was before it was paused		
 func startGame():
-	Global.speed = 0	
+	Global.speed = Global.previousSpeed	
 	emit_signal("values")
 
+# Moves the voters into the collectedVoters counter
 func collectVoters():
 	Global.collectedVoters += Global.voters
 	emit_signal("values")
@@ -44,7 +72,8 @@ func _ready():
 	
 	background_music.play()
 	scene_items_handler.init()
-	
+
+#moves the parallax background scroller	
 func _physics_process(delta):
 	#print(Global.speed)
 	parallax_background.scroll_base_offset.x -= Global.speed * delta
