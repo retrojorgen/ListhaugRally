@@ -76,7 +76,7 @@ animation = &"withVoters"
 autoplay = "default"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 28)
+position = Vector2(-3, 33)
 scale = Vector2(3, 3)
 texture = ExtResource("2_dqkch")
 region_enabled = true

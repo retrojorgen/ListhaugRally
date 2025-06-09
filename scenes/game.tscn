@@ -14,6 +14,7 @@ size = Vector2(20, 392)
 size = Vector2(1558, 5)
 
 [node name="Game" type="Node2D"]
+position = Vector2(1, 1)
 script = ExtResource("1_yqjtg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -40,7 +41,7 @@ region_rect = Rect2(1, -0.25, 959, 409.25)
 position = Vector2(-530, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StopItems"]
-position = Vector2(0, 68)
+position = Vector2(-376, 56)
 shape = SubResource("RectangleShape2D_iywne")
 
 [node name="ScoreKeeper" parent="." instance=ExtResource("5_iywne")]

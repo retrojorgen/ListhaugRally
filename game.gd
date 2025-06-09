@@ -1,6 +1,6 @@
 extends Node2D
 # The main purpose of this file is to be the only place that can update the global game data
-
+# mostly the player should communicate with the functions here
 
 @onready var parallax_background: ParallaxBackground = $ParallaxBackground
 @onready var player: CharacterBody2D = $Player
@@ -17,11 +17,32 @@ extends Node2D
 
 signal values
 
+func increaseWaffles():
+	Global.waffles += 1
+
+
+func decreaseWaffles():
+	Global.waffles -= 1
+	
+func removeWaffles():
+	Global.waffles = 0	
+
+func setInvincible():
+	Global.is_invincible = true
+	
+
+func removeInvincible():
+	Global.is_invincible = false
+	
+func toggleJumping():
+	Global.is_jumping = !Global.is_jumping
+
+
 # if an enemy causes the player to lose a voter
 func decreaseVoters():
 	if Global.voters == 0:
 		return
-	else: 
+	else:
 		if Global.voters > 0:
 			Global.voters -= 1
 	emit_signal("values")
@@ -40,7 +61,8 @@ func loseVoters():
 func decreaseLife():
 	#make sure the voters are set to 0. This should already be a fact most of the times.
 	Global.voters = 0
-	Global.lives -= 1;
+	Global.lives -= 1
+	removeWaffles()
 	emit_signal("values")
 	if Global.lives == 0:
 		gameOver()
@@ -60,6 +82,7 @@ func stopGame():
 
 # Start the game by setting the speed back to what it was before it was paused		
 func startGame():
+	scene_items_handler.start_sequence()
 	Global.speed = Global.previousSpeed	
 	emit_signal("values")
 

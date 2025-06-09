@@ -54,7 +54,7 @@ region_rect = Rect2(0, 49, 30, 16)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cdu6p")
 autoplay = "default"
-frame_progress = 0.495809
+frame_progress = 0.0930117
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

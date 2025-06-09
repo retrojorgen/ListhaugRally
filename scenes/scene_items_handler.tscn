@@ -6,7 +6,7 @@
 script = ExtResource("1_2y4ac")
 
 [node name="HoleTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 4.0
 autostart = true
 
 [node name="SpawnTimer" type="Timer" parent="."]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckyewc3jditd0"]
+[gd_scene load_steps=16 format=3 uid="uid://ckyewc3jditd0"]
 
 [ext_resource type="Script" uid="uid://d1sqwbkgkwqom" path="res://scenes/character.gd" id="1_rkhd4"]
+[ext_resource type="Texture2D" uid="uid://cmjjg84ajogrt" path="res://assets/sprites/waffle-character.png" id="2_lrhn5"]
 [ext_resource type="Texture2D" uid="uid://h6tgrlxqbcqk" path="res://assets/sprites/stemmer-animasjon.png" id="2_rkhd4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrhn5"]
@@ -44,7 +45,7 @@ size = Vector2(9, 16)
 
 [sub_resource type="Animation" id="Animation_rkhd4"]
 resource_name = "float"
-length = 0.25
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,22 +53,22 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 0.490438, 1.74533]
+"values": [0.0, -1.74533]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.266667),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-1, 1), Vector2(1e-05, 1e-05)]
+"values": [Vector2(-1, 1), Vector2(-0.5, 0.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -76,10 +77,10 @@ tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-1, -1.33333), Vector2(10.6667, -11.3333), Vector2(20, -20)]
+"values": [Vector2(-1, -1.33333), Vector2(-20, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -88,7 +89,7 @@ tracks/3/path = NodePath(".:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.47),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -100,7 +101,7 @@ tracks/4/path = NodePath("../CPUParticles2D:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.133333),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -112,7 +113,7 @@ tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -216,11 +217,17 @@ colors = PackedColorArray(1, 0, 0, 1, 0.20976, 0, 0.0592834, 1)
 scale = Vector2(3, 3)
 script = ExtResource("1_rkhd4")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 9)
+texture = ExtResource("2_lrhn5")
+region_enabled = true
+region_rect = Rect2(70, 49, 18, 16)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1.33333)
 sprite_frames = SubResource("SpriteFrames_2cgup")
 autoplay = "default"
-frame_progress = 0.443668
+frame_progress = 0.0567717
 centered = false
 offset = Vector2(-16, -20)
 flip_h = true
@@ -236,7 +243,7 @@ libraries = {
 }
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(4.33333, -12.6667)
+position = Vector2(-17.3333, -2.66667)
 emitting = false
 amount = 40
 lifetime = 0.5

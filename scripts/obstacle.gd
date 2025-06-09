@@ -28,7 +28,7 @@ func _process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if body.name == "Player" and can_damage:		
+	if body.name == "Player" and can_damage and !Global.is_invincible and !Global.is_jumping:		
 		body.hit()
 		emit_signal("obstacle")
 	#print(body.name)

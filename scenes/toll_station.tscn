@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://duyfjpkuqnp0c"]
+[gd_scene load_steps=13 format=3 uid="uid://duyfjpkuqnp0c"]
 
 [ext_resource type="Script" uid="uid://c3ysxidbncyru" path="res://scenes/toll_station.gd" id="1_mvmqy"]
 [ext_resource type="Texture2D" uid="uid://bwjpruq5418py" path="res://assets/sprites/bil-animasjon.png" id="1_qpk5r"]
@@ -26,11 +26,42 @@ colors = PackedColorArray(1, 0.898039, 0, 1, 0.20976, 0, 0.0592834, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdq5f"]
 size = Vector2(15, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbwnc"]
-size = Vector2(14, 6)
+[sub_resource type="Animation" id="Animation_gdq5f"]
+resource_name = "moving_camera"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.07, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-43.6667, 49), Vector2(76.3333, -72.3333), Vector2(-43.6667, 49)]
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtm44"]
-size = Vector2(14, 6)
+[sub_resource type="Animation" id="Animation_bbwnc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-43.6667, 49)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtm44"]
+_data = {
+&"RESET": SubResource("Animation_bbwnc"),
+&"moving_camera": SubResource("Animation_gdq5f")
+}
 
 [node name="TollStation" type="Node2D"]
 scale = Vector2(3, 3)
@@ -46,32 +77,32 @@ z_index = 6
 position = Vector2(-25.0003, 47.1667)
 texture = ExtResource("1_qpk5r")
 region_enabled = true
-region_rect = Rect2(0, 162, 32, 29)
+region_rect = Rect2(0, 162, 33, 29)
 
 [node name="TopBar2" type="Sprite2D" parent="TopBars"]
 z_index = 6
-position = Vector2(3.99966, 18.1667)
+position = Vector2(4, 18.167)
 texture = ExtResource("1_qpk5r")
 region_enabled = true
-region_rect = Rect2(0, 162, 32, 29)
+region_rect = Rect2(0, 162, 33, 29)
 
 [node name="TopBar3" type="Sprite2D" parent="TopBars"]
 z_index = 6
 position = Vector2(32.9997, -10.8333)
 texture = ExtResource("1_qpk5r")
 region_enabled = true
-region_rect = Rect2(0, 162, 32, 29)
+region_rect = Rect2(0, 162, 33, 29)
 
 [node name="TopBar4" type="Sprite2D" parent="TopBars"]
 z_index = 6
 position = Vector2(61.9997, -39.8333)
 texture = ExtResource("1_qpk5r")
 region_enabled = true
-region_rect = Rect2(0, 162, 32, 29)
+region_rect = Rect2(0, 162, 33, 29)
 
 [node name="TopBar5" type="Sprite2D" parent="TopBars"]
 z_index = 6
-position = Vector2(86.4997, -62.8333)
+position = Vector2(86, -62.833)
 texture = ExtResource("1_qpk5r")
 region_enabled = true
 region_rect = Rect2(0, 174, 23, 17)
@@ -118,14 +149,14 @@ region_rect = Rect2(0, 153, 15, 6)
 
 [node name="TollTop" type="Sprite2D" parent="BaseGraphics"]
 z_index = 6
-position = Vector2(-57.6667, 59)
+position = Vector2(-58.16, 59)
 texture = ExtResource("1_qpk5r")
 region_enabled = true
 region_rect = Rect2(-1, 103, 12, 26)
 
 [node name="TollBottom" type="Sprite2D" parent="BaseGraphics"]
 z_index = 4
-position = Vector2(75.33, -69.667)
+position = Vector2(73.83, -69.667)
 texture = ExtResource("1_qpk5r")
 region_enabled = true
 region_rect = Rect2(0, 202, 10, 24)
@@ -136,7 +167,7 @@ position = Vector2(-19.6667, -8.66667)
 texture = ExtResource("3_gdq5f")
 
 [node name="TollLineArea" type="Area2D" parent="."]
-position = Vector2(54.5, -56.5)
+position = Vector2(54, -56.3333)
 
 [node name="TollLine" type="CollisionShape2D" parent="TollLineArea"]
 position = Vector2(-52.5, 70.5)
@@ -194,6 +225,7 @@ color_ramp = SubResource("Gradient_gdq5f")
 z_index = 6
 
 [node name="camera1area" type="Area2D" parent="cameras"]
+position = Vector2(-43.6667, 49)
 
 [node name="camera1collision" type="CollisionShape2D" parent="cameras/camera1area"]
 position = Vector2(-8.5, -1)
@@ -224,70 +256,13 @@ scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_mvmqy")
 color_ramp = SubResource("Gradient_gdq5f")
 
-[node name="camera2area" type="Area2D" parent="cameras"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cameras/camera1area"]
+libraries = {
+&"": SubResource("AnimationLibrary_mtm44")
+}
+autoplay = "moving_camera"
 
-[node name="camera2collision" type="CollisionShape2D" parent="cameras/camera2area"]
-position = Vector2(1, -10)
-shape = SubResource("RectangleShape2D_bbwnc")
-
-[node name="camera2sprite" type="Sprite2D" parent="cameras/camera2area"]
-position = Vector2(1, -9)
-texture = ExtResource("1_qpk5r")
-region_enabled = true
-region_rect = Rect2(4, 233, 22, 18)
-
-[node name="camera2explosion" type="CPUParticles2D" parent="cameras/camera2area"]
-z_index = 4
-position = Vector2(-1, -10)
-emitting = false
-amount = 40
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-emission_shape = 1
-emission_sphere_radius = 0.01
-spread = 180.0
-gravity = Vector2(0, 80)
-initial_velocity_max = 44.44
-angular_velocity_max = 218.18
-scale_amount_min = 4.0
-scale_amount_max = 6.0
-scale_amount_curve = SubResource("Curve_mvmqy")
-color_ramp = SubResource("Gradient_gdq5f")
-
-[node name="camera3area" type="Area2D" parent="cameras"]
-
-[node name="camera3collision" type="CollisionShape2D" parent="cameras/camera3area"]
-position = Vector2(9, -19)
-shape = SubResource("RectangleShape2D_mtm44")
-
-[node name="camera3sprite" type="Sprite2D" parent="cameras/camera3area"]
-position = Vector2(10, -18)
-texture = ExtResource("1_qpk5r")
-region_enabled = true
-region_rect = Rect2(4, 233, 22, 18)
-
-[node name="camera3explosion" type="CPUParticles2D" parent="cameras/camera3area"]
-z_index = 4
-position = Vector2(9, -19)
-emitting = false
-amount = 40
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-emission_shape = 1
-emission_sphere_radius = 0.01
-spread = 180.0
-gravity = Vector2(0, 80)
-initial_velocity_max = 44.44
-angular_velocity_max = 218.18
-scale_amount_min = 4.0
-scale_amount_max = 6.0
-scale_amount_curve = SubResource("Curve_mvmqy")
-color_ramp = SubResource("Gradient_gdq5f")
-
+[connection signal="area_entered" from="TollLineArea" to="." method="_on_toll_line_area_area_entered"]
 [connection signal="body_entered" from="TollLineArea" to="." method="_on_toll_line_area_body_entered"]
 [connection signal="body_entered" from="TollBoothArea" to="." method="_on_toll_booth_area_body_entered"]
 [connection signal="area_entered" from="cameras/camera1area" to="." method="_on_camera_1_area_area_entered"]
-[connection signal="area_entered" from="cameras/camera2area" to="." method="_on_camera_2_area_area_entered"]
-[connection signal="area_entered" from="cameras/camera3area" to="." method="_on_camera_3_area_area_entered"]

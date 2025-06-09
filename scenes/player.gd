@@ -9,10 +9,9 @@ const VOTER = preload("res://scenes/character.tscn")
 var GameScene;
 
 
-const SPEED = 300.0
+const SPEED = 400.0
 const JUMP_VELOCITY = -600.0
 var gravity := 400.0
-var is_jumping := false
 var jump_origin_y := 0.0
 var jump_height := 60.0
 var jump_speed := 300.0
@@ -29,6 +28,7 @@ func _ready():
 	Sounds.listhaug_bil.play()
 	GameScene = get_tree().current_scene;
 
+# emits a waffle bullet from the player
 func spawn_waffle():
 	#print("spawning obstacle")
 	var waffleInstance = WAFFLE.instantiate()
@@ -38,6 +38,11 @@ func spawn_waffle():
 	Sounds.powerup.play()
 	
 
+
+func powerUp():
+	GameScene.increaseWaffles()
+
+#makes the player invincible for five seconds
 func flash():
 	Global.is_invincible = true
 	var blinking := true
@@ -60,7 +65,7 @@ func flash():
 	blink_timer.start()
 
 	# Timer for å stoppe etter 6 sekunder
-	await get_tree().create_timer(6.0).timeout
+	await get_tree().create_timer(2.0).timeout
 
 	blink_timer.stop()
 	blink_timer.queue_free()
@@ -68,14 +73,15 @@ func flash():
 	sprite_2d.modulate.a = 1.0
 	Global.is_invincible = false
 	
-		
+# the main loop of the player
+# controls are handled here		
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.ZERO
 
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
 	if Input.is_action_pressed("ui_left"):
-		direction.x -= 1
+		direction.x -= 2
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
 	if Input.is_action_pressed("ui_up"):
@@ -101,15 +107,15 @@ func _physics_process(delta: float) -> void:
 	
 		# Start hopp hvis på "bakken" og trykker knapp
 		# Start hopp
-	if Input.is_action_just_pressed("ui_accept") and not is_jumping:
+	if Input.is_action_just_pressed("ui_accept") and not Global.is_jumping:
 		Sounds.jump.play()
-		is_jumping = true
-		collision_shape_2d.disabled = true 
+		GameScene.toggleJumping()
+		#collision_shape_2d.disabled = true 
 		going_up = true
 		jump_origin_y = car_sprite.position.y
 
 	# Flytt kun sprite opp og ned
-	if is_jumping:
+	if Global.is_jumping:
 		if going_up:
 			car_sprite.position.y -= jump_speed * delta
 			if car_sprite.position.y <= jump_origin_y - jump_height:
@@ -119,7 +125,7 @@ func _physics_process(delta: float) -> void:
 			car_sprite.position.y += jump_speed * delta
 			if car_sprite.position.y >= jump_origin_y:
 				car_sprite.position.y = jump_origin_y
-				is_jumping = false
+				GameScene.toggleJumping()
 				collision_shape_2d.disabled = false
 	
 	
@@ -139,6 +145,12 @@ func _physics_process(delta: float) -> void:
 		position.y = Global.BOTTOM_OF_TRACK;
 		
 
+# if a player hits an enemy that makes it lose all voters
+func loseAllVoters():
+	loseVoters(Global.voters)
+	GameScene.loseVoters()
+	car_sprite.play("default")
+
 func loseVoters(numberOfVoters = 1):
 		#print("spawning obstacle")
 	
@@ -155,71 +167,104 @@ func loseVoters(numberOfVoters = 1):
 		character.global_position = Vector2(position.x, position.y);
 		get_node("/root/Game").add_child(character)
 		character.float()
+		await get_tree().create_timer(0.1).timeout
 		
-
+func instantKill():
+	explodeCar()	
+	GameScene.decreaseLife()
 func explodeCar():
 	explosion.emitting = true
 	car_sprite.visible = false
 	sprite_2d.visible = false
 	GameScene.stopGame()
 	Sounds.explosion.play()
-	await get_tree().create_timer(2).timeout
+	#We have more tries left
+	if Global.lives > 1:
+		flash()
+		await get_tree().create_timer(2).timeout
+		car_sprite.visible = true
+		sprite_2d.visible = true
+		GameScene.startGame()
+
+func showCarAfterExplosion():
+	#GameScene.stopGame()
+	#Sounds.explosion.play()
+	#await get_tree().create_timer(2).timeout
 	car_sprite.visible = true
 	sprite_2d.visible = true
-	GameScene.startGame()
-	
-	
-# when the player collides with an item
-func itemHit():
-	car_sprite.modulate = Color(2, 2, 2)
-	await get_tree().create_timer(0.1).timeout
-	car_sprite.modulate = Color(1,1,1)
-	
-	
+	#GameScene.startGame()	
 
-
-func voterCollision():
-	itemHit()
-	Sounds.coin.play()
-	car_sprite.play("withVoters")
-	GameScene.increaseVoters()
-
-func localeCollision():
-	itemHit()
-	GameScene.collectVoters()
-	defaultAnimation()
 
 func defaultAnimation():
 	car_sprite.play("default")
 
+func animationWithVoters():
+	car_sprite.play("withVoters")
+		
+# when the player collides with an item
+func _itemHit():
+	car_sprite.modulate = Color(2, 2, 2)
+	await get_tree().create_timer(0.1).timeout
+	car_sprite.modulate = Color(1,1,1)
+
+
+func voterCollision():
+	_itemHit()
+	Sounds.coin.play()
+	car_sprite.play("withVoters")
+	GameScene.increaseVoters()
+
+# used if a player collides with an object that only decreases voters
+func noHitObstacleCollision():
+	
+	GameScene.loseVoters()
+
+func localeCollision():
+	_itemHit()
+	defaultAnimation()
+	GameScene.collectVoters()
+
+
+
+func obstacleCollision():
+	Sounds.hurt.play()
+	Global.is_invincible = true
+	
+	if Global.voters >= 1:
+		loseAllVoters()
+	if !Global.is_invincible:
+		hit()
+	
+# used to mark when something happens to the player
+func brightenPlayer():
+	car_sprite.modulate = Color(2, 2, 2)
+	
+# reset brightness to normal
+func resetBrightnessPlayer():
+	car_sprite.modulate = Color(1, 1, 1, 1)
+		
 # when the player collides with an obstacle	
 func hit():
-	# Gjør bilen hvit
-	if Global.voters >= 1:
-		loseVoters()
-	Sounds.hurt.play()
-	if !Global.is_invincible:
-		
-		car_sprite.modulate = Color(2, 2, 2)
-		Global.is_invincible
-
+	GameScene.setInvincible()
+	brightenPlayer()
 		# Beveg litt bakover
-		var knockback_distance := 50
-		var knockback_speed := 500.0
-		var target_position := position - Vector2(knockback_distance, 0)
-
-		# Bruk tween for smooth bevegelse
-		var tween := create_tween()
-		tween.tween_property(self, "position", target_position, knockback_distance / knockback_speed)
-		tween.tween_callback(Callable(self, "_on_hit_finished"))
+	var knockback_distance := 50
+	var knockback_speed := 500.0
+	var target_position := position - Vector2(knockback_distance, 0)		# Bruk tween for smooth bevegelse
+	var tween := create_tween()
+	tween.tween_property(self, "position", target_position, knockback_distance / knockback_speed)
+	tween.tween_callback(Callable(self, "_on_hit_finished"))
 		
-	
 func _on_hit_finished():
 	# Tilbakestill farge
-	car_sprite.modulate = Color(1, 1, 1, 1)
-	if Global.voters == 1:
-		car_sprite.play("default")
+	#car_sprite.modulate = Color(1, 1, 1, 1)
+	resetBrightnessPlayer()
+	
 	if Global.voters < 1:
 		explodeCar()
-	GameScene.decreaseVoters()
+	else:
+		GameScene.loseVoters()
+		loseAllVoters()
+		
+	flash()
 	

@@ -4,11 +4,24 @@ extends Area2D
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 var can_damage = true
-
+var directionUp = false
 signal obstacle
 
+
+#func _ready():
+		
+
 func _process(delta):
-	global_position.x -= (Global.speed + 200) * delta
+	global_position.x -= (Global.speed + 300) * delta
+	if !directionUp:
+		global_position.y += Global.speed * delta
+		if global_position.y >= Global.BOTTOM_OF_TRACK:
+			directionUp = true
+	else:
+		global_position.y -= Global.speed * delta
+		if global_position.y <= Global.TOP_OF_TRACK:
+			directionUp = false
+	
 
 
 func _on_body_entered(body: Node2D) -> void:

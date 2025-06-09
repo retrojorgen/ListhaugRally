@@ -1,0 +1,400 @@
+[gd_scene load_steps=4 format=3 uid="uid://f3cip2w7po54"]
+
+[ext_resource type="Script" uid="uid://nfo5snoe6e0u" path="res://upperCharacters.gd" id="1_v8i3t"]
+[ext_resource type="Texture2D" uid="uid://2y4tcohtv1vm" path="res://assets/sprites/landscape-characters.png" id="2_t86xm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gii10"]
+
+[node name="Node2D" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_v8i3t")
+
+[node name="All_animals" type="Node2D" parent="."]
+visible = false
+
+[node name="chicken" type="Sprite2D" parent="All_animals"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="tree" type="Sprite2D" parent="All_animals"]
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="All_animals/tree"]
+visible = false
+position = Vector2(18, 2.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="All_animals/tree/tree"]
+visible = false
+position = Vector2(-34.3333, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="cow" type="Sprite2D" parent="All_animals"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="barn" type="Sprite2D" parent="All_animals"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(76, 1, 40, 36)
+
+[node name="moose_sign" type="Sprite2D" parent="All_animals"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(133, 1, 21, 36)
+
+[node name="sheep" type="Sprite2D" parent="All_animals"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(156, 19, 18, 18)
+
+[node name="moose" type="Sprite2D" parent="All_animals"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(175, 9, 32, 28)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="Collection1" type="Node2D" parent="."]
+visible = false
+
+[node name="chicken" type="Sprite2D" parent="Collection1"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="tree" type="Sprite2D" parent="Collection1"]
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree"]
+position = Vector2(18, 2.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree/tree"]
+position = Vector2(-34.3333, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="Collection2" type="Node2D" parent="."]
+visible = false
+
+[node name="tree3" type="Sprite2D" parent="Collection2"]
+position = Vector2(35.6667, 7)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection2"]
+position = Vector2(-16, 9)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="chicken" type="Sprite2D" parent="Collection2"]
+visible = false
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="tree" type="Sprite2D" parent="Collection2"]
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="cow" type="Sprite2D" parent="Collection2"]
+position = Vector2(5, 5.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="Collection3" type="Node2D" parent="."]
+visible = false
+
+[node name="tree6" type="Sprite2D" parent="Collection3"]
+position = Vector2(24, 3.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection3"]
+position = Vector2(9.66667, -3.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection3"]
+position = Vector2(35.6667, 7)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection3"]
+position = Vector2(-16, 9)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection3"]
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection3"]
+position = Vector2(16, 11.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection3"]
+position = Vector2(-30.6667, 0.999999)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection3"]
+position = Vector2(-3.33333, 12)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="Collection4" type="Node2D" parent="."]
+visible = false
+
+[node name="cow" type="Sprite2D" parent="Collection4"]
+position = Vector2(-10.6667, -5.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="cow" type="Sprite2D" parent="Collection4/cow"]
+position = Vector2(24.3333, 3.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="cow" type="Sprite2D" parent="Collection4/cow/cow"]
+position = Vector2(-30, 3.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="cow" type="Sprite2D" parent="Collection4/cow/cow/cow"]
+position = Vector2(24.3333, 3.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="Collection5" type="Node2D" parent="."]
+visible = false
+
+[node name="barn" type="Sprite2D" parent="Collection5"]
+position = Vector2(20.3333, -6.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(76, 1, 40, 36)
+
+[node name="cow" type="Sprite2D" parent="Collection5/barn"]
+position = Vector2(-23.6667, 5.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="Collection6" type="Node2D" parent="."]
+visible = false
+
+[node name="barn" type="Sprite2D" parent="Collection6"]
+visible = false
+position = Vector2(20.3333, -6.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(76, 1, 40, 36)
+
+[node name="cow" type="Sprite2D" parent="Collection6/barn"]
+visible = false
+position = Vector2(-23.6667, 5.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="moose_sign" type="Sprite2D" parent="Collection6"]
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(133, 1, 21, 36)
+
+[node name="moose" type="Sprite2D" parent="Collection6"]
+position = Vector2(23.6667, 3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(175, 9, 32, 28)
+
+[node name="Collection7" type="Node2D" parent="."]
+visible = false
+
+[node name="moose" type="Sprite2D" parent="Collection7"]
+position = Vector2(23.6667, 3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(175, 9, 32, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection7"]
+position = Vector2(-0.666667, -0.666667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection7/tree"]
+position = Vector2(18.6667, 3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection7/tree/tree"]
+visible = false
+position = Vector2(-34.3333, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="Collection8" type="Node2D" parent="."]
+visible = false
+
+[node name="chicken" type="Sprite2D" parent="Collection8"]
+position = Vector2(20.3333, 17.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="cow" type="Sprite2D" parent="Collection8"]
+position = Vector2(0.666667, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="chicken2" type="Sprite2D" parent="Collection8"]
+position = Vector2(41.6667, 15)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="chicken3" type="Sprite2D" parent="Collection8"]
+position = Vector2(30.6667, 18.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="chicken4" type="Sprite2D" parent="Collection8"]
+position = Vector2(11, 22.6667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="chicken5" type="Sprite2D" parent="Collection8"]
+position = Vector2(32, 10)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="chicken6" type="Sprite2D" parent="Collection8"]
+position = Vector2(21.3333, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="Collection9" type="Node2D" parent="."]
+visible = false
+
+[node name="cow" type="Sprite2D" parent="Collection9"]
+position = Vector2(0.666667, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="cow" type="Sprite2D" parent="Collection9/cow"]
+position = Vector2(29, -1.33333)
+scale = Vector2(-1, 1)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="chicken6" type="Sprite2D" parent="Collection9"]
+position = Vector2(0, 3)
+scale = Vector2(-1, 1)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(211, 22, 15, 12)
+
+[node name="cow2" type="Sprite2D" parent="Collection9"]
+position = Vector2(54.6667, 0.666667)
+scale = Vector2(-1, 1)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="cow2" type="Sprite2D" parent="Collection9/cow2"]
+position = Vector2(1.66667, 17.6667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="cow3" type="Sprite2D" parent="Collection9/cow2"]
+position = Vector2(-24.6667, -5)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="cow2" type="Sprite2D" parent="Collection9/cow2/cow3"]
+position = Vector2(1.66667, 17.6667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(44, 5, 27, 28)
+
+[node name="Collection10" type="Node2D" parent="."]
+visible = false
+
+[node name="sheep" type="Sprite2D" parent="Collection10"]
+position = Vector2(6.66667, 7.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(156, 19, 18, 18)
+
+[node name="sheep" type="Sprite2D" parent="Collection10/sheep"]
+position = Vector2(14.3333, 6.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(156, 19, 18, 18)
+
+[node name="sheep" type="Sprite2D" parent="Collection10/sheep/sheep"]
+position = Vector2(9, -10.6667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(156, 19, 18, 18)
+
+[node name="sheep" type="Sprite2D" parent="Collection10/sheep/sheep/sheep"]
+position = Vector2(7, 13.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(156, 19, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gii10")

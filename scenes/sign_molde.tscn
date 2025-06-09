@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://vt4ffkr6sk45"]
+
+[ext_resource type="Script" uid="uid://dni1knad2home" path="res://scenes/upperLandscape.gd" id="1_6wyvg"]
+[ext_resource type="Texture2D" uid="uid://d1dlhkona482x" path="res://assets/sprites/skilt.png" id="1_j34nq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uf5u"]
+size = Vector2(77.3333, 38)
+
+[node name="SignMolde" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_6wyvg")
+
+[node name="Skilt" type="Sprite2D" parent="."]
+position = Vector2(0.333333, 8)
+texture = ExtResource("1_j34nq")
+region_enabled = true
+region_rect = Rect2(0, 0, 84, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.66667, 8)
+shape = SubResource("RectangleShape2D_0uf5u")
