@@ -7,7 +7,7 @@ var is_jumping := false
 
 var previousSpeed := 600
 var speed := 600
-var lives := 10;
+var lives := 4;
 var voters := 0;
 var waffles := 1;
 var collectedVoters = 0;

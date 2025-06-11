@@ -9,8 +9,38 @@
 script = ExtResource("1_xi53c")
 metadata/_edit_horizontal_guides_ = [71.0, 67.0]
 
-[node name="MainCharacter" type="Sprite2D" parent="."]
-position = Vector2(52, 61)
+[node name="Lives" type="Node2D" parent="."]
+
+[node name="MainCharacter1" type="Sprite2D" parent="Lives"]
+visible = false
+position = Vector2(24, 24.5)
+scale = Vector2(3, 3)
+texture = ExtResource("2_xi53c")
+offset = Vector2(-1, 0)
+region_enabled = true
+region_rect = Rect2(40, 73, 14, 15)
+
+[node name="MainCharacter2" type="Sprite2D" parent="Lives"]
+visible = false
+position = Vector2(58, 24.5)
+scale = Vector2(3, 3)
+texture = ExtResource("2_xi53c")
+offset = Vector2(-1, 0)
+region_enabled = true
+region_rect = Rect2(40, 73, 14, 15)
+
+[node name="MainCharacter3" type="Sprite2D" parent="Lives"]
+visible = false
+position = Vector2(94, 24.5)
+scale = Vector2(3, 3)
+texture = ExtResource("2_xi53c")
+offset = Vector2(-1, 0)
+region_enabled = true
+region_rect = Rect2(40, 73, 14, 15)
+
+[node name="MainCharacter4" type="Sprite2D" parent="Lives"]
+visible = false
+position = Vector2(130, 24.5)
 scale = Vector2(3, 3)
 texture = ExtResource("2_xi53c")
 offset = Vector2(-1, 0)
@@ -18,16 +48,16 @@ region_enabled = true
 region_rect = Rect2(40, 73, 14, 15)
 
 [node name="MainCharacterLabel" type="Label" parent="."]
-offset_left = 67.0
-offset_top = 43.0
-offset_right = 111.0
-offset_bottom = 75.0
+offset_left = 228.0
+offset_top = -127.0
+offset_right = 272.0
+offset_bottom = -95.0
 theme_override_fonts/font = ExtResource("2_efoji")
 theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="PickerCharacter" type="Sprite2D" parent="."]
-position = Vector2(167, 61)
+position = Vector2(409, 23.5)
 scale = Vector2(3, 3)
 texture = ExtResource("2_xi53c")
 offset = Vector2(-1, 0)
@@ -35,27 +65,27 @@ region_enabled = true
 region_rect = Rect2(42, 42, 12, 15)
 
 [node name="PickerCharacterLabel" type="Label" parent="."]
-offset_left = 181.0
-offset_top = 44.0
-offset_right = 214.0
-offset_bottom = 76.0
+offset_left = 414.0
+offset_top = -167.5
+offset_right = 447.0
+offset_bottom = -135.5
 theme_override_fonts/font = ExtResource("2_efoji")
 theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="BoothCharacter" type="Sprite2D" parent="."]
-position = Vector2(288, 57)
+position = Vector2(936, 18.5)
 scale = Vector2(3, 3)
 texture = ExtResource("2_xi53c")
 offset = Vector2(-1, 0)
 region_enabled = true
-region_rect = Rect2(71, 73, 13, 13)
+region_rect = Rect2(71, 73, 15, 13)
 
 [node name="BoothCharacterLabel" type="Label" parent="."]
-offset_left = 302.0
-offset_top = 43.0
-offset_right = 339.0
-offset_bottom = 75.0
+offset_left = 649.0
+offset_top = -318.0
+offset_right = 686.0
+offset_bottom = -286.0
 theme_override_fonts/font = ExtResource("3_xi53c")
 theme_override_font_sizes/font_size = 32
 text = "0"
@@ -77,3 +107,42 @@ offset_bottom = 74.0
 theme_override_fonts/font = ExtResource("2_efoji")
 theme_override_font_sizes/font_size = 32
 text = "0"
+
+[node name="CollectedVoters" type="Node2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="emptybar" type="Sprite2D" parent="CollectedVoters"]
+position = Vector2(255, 7.5)
+texture = ExtResource("2_xi53c")
+region_enabled = true
+region_rect = Rect2(133, 19, 102, 9)
+
+[node name="filledbar" type="Sprite2D" parent="CollectedVoters"]
+position = Vector2(205, 4)
+texture = ExtResource("2_xi53c")
+centered = false
+region_enabled = true
+region_rect = Rect2(134, 4, 50, 7)
+
+[node name="Voters" type="Node2D" parent="."]
+position = Vector2(-166, -1)
+scale = Vector2(3, 3)
+
+[node name="emptybar" type="Sprite2D" parent="Voters"]
+position = Vector2(172, 7.33333)
+texture = ExtResource("2_xi53c")
+region_enabled = true
+region_rect = Rect2(98, 19, 22, 9)
+
+[node name="filledbar" type="Sprite2D" parent="Voters"]
+position = Vector2(162, 3.83333)
+texture = ExtResource("2_xi53c")
+centered = false
+region_enabled = true
+region_rect = Rect2(99, 4, 20, 7)
+
+[node name="glowing" type="Sprite2D" parent="Voters"]
+position = Vector2(172, 7.33333)
+texture = ExtResource("2_xi53c")
+region_enabled = true
+region_rect = Rect2(95, 29, 28, 13)

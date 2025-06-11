@@ -89,6 +89,7 @@ func startGame():
 # Moves the voters into the collectedVoters counter
 func collectVoters():
 	Global.collectedVoters += Global.voters
+	Global.voters = 0
 	emit_signal("values")
 		
 func _ready():
