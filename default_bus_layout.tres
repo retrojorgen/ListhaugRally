@@ -5,7 +5,6 @@ resource_name = "Phaser"
 rate_hz = 1.16
 
 [resource]
-bus/0/send = &"background"
 bus/1/name = &"background"
 bus/1/solo = false
 bus/1/mute = false
