@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgxyohufvb5ej"]
+[gd_scene load_steps=14 format=3 uid="uid://bgxyohufvb5ej"]
 
 [ext_resource type="Script" uid="uid://bguwbcr1j2ns6" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://chi7u3f81xyoh" path="res://assets/sprites/main-character.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bwjpruq5418py" path="res://assets/sprites/bil-animasjon.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://cykvh25is5yp3" path="res://assets/sprites/apple.png" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(88.5, 58.5)
@@ -82,7 +83,7 @@ texture = ExtResource("2_dqkch")
 region_enabled = true
 region_rect = Rect2(1, 46, 31, 22)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="grayParticles" type="CPUParticles2D" parent="."]
 position = Vector2(-44, 18)
 amount = 16
 speed_scale = 0.8
@@ -123,3 +124,29 @@ scale_amount_min = 10.0
 scale_amount_max = 14.0
 scale_amount_curve = SubResource("Curve_qhqgy")
 color_ramp = SubResource("Gradient_dqkch")
+
+[node name="AppleParticles" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-48, 16)
+amount = 16
+texture = ExtResource("4_dqkch")
+speed_scale = 0.8
+explosiveness = 0.1
+randomness = 0.54
+use_fixed_seed = true
+seed = 394520468
+emission_shape = 1
+emission_sphere_radius = 0.02
+direction = Vector2(10, -200)
+spread = 13.18
+gravity = Vector2(-200, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 20.0
+angular_velocity_min = 100.0
+angular_velocity_max = 200.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_g2els")
+color = Color(0.72, 0.72, 0.72, 1)
+hue_variation_min = -1.0
+hue_variation_max = 0.48

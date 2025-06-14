@@ -21,18 +21,19 @@ func update_voters_bar(current_value: int):
 	#$EnergyBar.size.x = width
 	var sprite = $Voters/filledbar
 	var rect = sprite.region_rect
-	print("width", width)
+	#print("width", width)
 	rect.size.x = width
 	sprite.region_rect = rect
 
 func update_collected_voters_bar(current_value: int):
 	var sprite = $CollectedVoters/filledbar
 	var rect = sprite.region_rect
-	rect.size.x = Global.collectedVoters
+	rect.size.x = Global.collectedVoters * 2
 	sprite.region_rect = rect
 	#$CollectedVoters/filledbar.region.size.x = Global.collectedVoters
 	
 func updateValues():
+	print("updating values ",Global.lives)
 	if Global.lives == 1:
 		main_character_1.visible = true
 		main_character_2.visible = false

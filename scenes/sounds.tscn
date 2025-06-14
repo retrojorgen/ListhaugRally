@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cag655nsmsf45" path="res://assets/sounds/hurt.wav" id="4_p1d1g"]
 [ext_resource type="AudioStream" uid="uid://cep7kb85dgp72" path="res://assets/sounds/coin.wav" id="5_qpfqm"]
 [ext_resource type="AudioStream" uid="uid://cewp0p2svgijo" path="res://assets/sounds/listhaug-bil.wav" id="7_p1d1g"]
-[ext_resource type="AudioStream" uid="uid://cwy850w66we1i" path="res://assets/sounds/listhaug-stemmer.wav" id="8_qpfqm"]
+[ext_resource type="AudioStream" uid="uid://c1v88alki4wf6" path="res://assets/sounds/listhaug-stemmer.ogg" id="8_p1d1g"]
 
 [node name="Sounds" type="Node2D"]
 script = ExtResource("1_p1d1g")
@@ -38,5 +38,6 @@ stream = ExtResource("7_p1d1g")
 bus = &"sound effects"
 
 [node name="listhaugStemmer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_qpfqm")
+stream = ExtResource("8_p1d1g")
+volume_db = 3.28
 bus = &"sound effects"

@@ -4,31 +4,3 @@
 
 [node name="SceneItemsHandler" type="Node2D"]
 script = ExtResource("1_2y4ac")
-
-[node name="HoleTimer" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[node name="CharacterTimer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
-[node name="LocaleTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[node name="PowerupTimer" type="Timer" parent="."]
-wait_time = 20.0
-autostart = true
-
-[node name="TollTimer" type="Timer" parent="."]
-wait_time = 8.0
-autostart = true
-
-[node name="ElectricCarTimer" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true

@@ -11,6 +11,7 @@ var lives := 4;
 var voters := 0;
 var waffles := 1;
 var collectedVoters = 0;
+var maxCollectedVoters = 50;
 
 const BOTTOM_OF_TRACK = 200
 const TOP_OF_TRACK = -160

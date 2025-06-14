@@ -45,6 +45,7 @@ func powerUp():
 #makes the player invincible for five seconds
 func flash():
 	Global.is_invincible = true
+	print("invincible")
 	var blinking := true
 
 	# Timer for blinking
@@ -65,12 +66,13 @@ func flash():
 	blink_timer.start()
 
 	# Timer for å stoppe etter 6 sekunder
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(4.0).timeout
 
 	blink_timer.stop()
 	blink_timer.queue_free()
 	car_sprite.modulate.a = 1.0
 	sprite_2d.modulate.a = 1.0
+	print("not invicible")
 	Global.is_invincible = false
 	
 # the main loop of the player
@@ -150,6 +152,8 @@ func loseAllVoters():
 	loseVoters(Global.voters)
 	GameScene.loseVoters()
 	car_sprite.play("default")
+	$grayParticles.visible = true
+	$AppleParticles.visible = false
 
 func loseVoters(numberOfVoters = 1):
 		#print("spawning obstacle")
@@ -168,19 +172,27 @@ func loseVoters(numberOfVoters = 1):
 		get_node("/root/Game").add_child(character)
 		character.float()
 		await get_tree().create_timer(0.1).timeout
-		
+
+func showCar():
+	car_sprite.visible = true
+	sprite_2d.visible = true
+	defaultAnimation()
+	
 func instantKill():
+	flash()
 	explodeCar()	
 	GameScene.decreaseLife()
+	
 func explodeCar():
 	explosion.emitting = true
 	car_sprite.visible = false
 	sprite_2d.visible = false
+	$grayParticles.visible = false
+	$AppleParticles.visible = false
 	GameScene.stopGame()
 	Sounds.explosion.play()
 	#We have more tries left
 	if Global.lives > 1:
-		flash()
 		await get_tree().create_timer(2).timeout
 		car_sprite.visible = true
 		sprite_2d.visible = true
@@ -197,9 +209,16 @@ func showCarAfterExplosion():
 
 func defaultAnimation():
 	car_sprite.play("default")
+	$grayParticles.restart()
+	$grayParticles.visible = true
+	$AppleParticles.visible = false
 
 func animationWithVoters():
 	car_sprite.play("withVoters")
+	$grayParticles.visible = false
+	$AppleParticles.restart()
+	$AppleParticles.visible = true
+	
 		
 # when the player collides with an item
 func _itemHit():
@@ -211,8 +230,11 @@ func _itemHit():
 func voterCollision():
 	_itemHit()
 	Sounds.coin.play()
-	car_sprite.play("withVoters")
+	
+	#car_sprite.play("withVoters")
 	GameScene.increaseVoters()
+	if Global.voters == 1:
+		animationWithVoters()
 
 # used if a player collides with an object that only decreases voters
 func noHitObstacleCollision():
@@ -228,7 +250,6 @@ func localeCollision():
 
 func obstacleCollision():
 	Sounds.hurt.play()
-	Global.is_invincible = true
 	
 	if Global.voters >= 1:
 		loseAllVoters()
@@ -245,15 +266,16 @@ func resetBrightnessPlayer():
 		
 # when the player collides with an obstacle	
 func hit():
-	GameScene.setInvincible()
+	flash()
 	brightenPlayer()
 		# Beveg litt bakover
-	var knockback_distance := 50
-	var knockback_speed := 500.0
-	var target_position := position - Vector2(knockback_distance, 0)		# Bruk tween for smooth bevegelse
-	var tween := create_tween()
-	tween.tween_property(self, "position", target_position, knockback_distance / knockback_speed)
-	tween.tween_callback(Callable(self, "_on_hit_finished"))
+	#var knockback_distance := 50
+	#var knockback_speed := 500.0
+	#var target_position := position - Vector2(knockback_distance, 0)		# Bruk tween for smooth bevegelse
+	#var tween := create_tween()
+	#tween.tween_property(self, "position", target_position, knockback_distance / knockback_speed)
+	#tween.tween_callback(Callable(self, "_on_hit_finished"))
+	_on_hit_finished()
 		
 func _on_hit_finished():
 	# Tilbakestill farge
@@ -266,5 +288,5 @@ func _on_hit_finished():
 		GameScene.loseVoters()
 		loseAllVoters()
 		
-	flash()
+	
 	

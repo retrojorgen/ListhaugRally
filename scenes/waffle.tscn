@@ -69,6 +69,7 @@ _data = {
 }
 
 [node name="waffle" type="Area2D"]
+z_index = 10
 script = ExtResource("1_5vc51")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]

@@ -74,7 +74,7 @@ visible = false
 visible = false
 
 [node name="chicken" type="Sprite2D" parent="Collection1"]
-visible = false
+position = Vector2(10.3333, 0.333333)
 texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(211, 22, 15, 12)
@@ -92,6 +92,54 @@ region_rect = Rect2(22, 5, 22, 28)
 
 [node name="tree" type="Sprite2D" parent="Collection1/tree/tree"]
 position = Vector2(-34.3333, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree/tree/tree"]
+position = Vector2(52.6666, -2.33334)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree/tree/tree/tree"]
+position = Vector2(17.3333, 7)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree/tree/tree/tree/tree"]
+position = Vector2(20.3333, -11)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection1"]
+position = Vector2(-41, 9.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree2"]
+position = Vector2(129.667, 2.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree2/tree"]
+position = Vector2(20.3333, -11.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree2/tree/tree"]
+position = Vector2(21, 11)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection1/tree2/tree/tree/tree"]
+position = Vector2(18.6667, -14.6667)
 texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(22, 5, 22, 28)
@@ -127,6 +175,42 @@ position = Vector2(5, 5.66667)
 texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(44, 5, 27, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection2"]
+position = Vector2(64, 6.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection2/tree4"]
+position = Vector2(-105, -3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection2/tree4/tree"]
+position = Vector2(129, -3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection2/tree4/tree/tree"]
+position = Vector2(-68, 10.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection2/tree4/tree/tree/tree"]
+position = Vector2(97.3333, -1.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection2/tree4/tree/tree/tree/tree"]
+position = Vector2(21, -7)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
 
 [node name="Collection3" type="Node2D" parent="."]
 visible = false
@@ -178,6 +262,54 @@ texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(22, 5, 22, 28)
 
+[node name="tree9" type="Sprite2D" parent="Collection3"]
+position = Vector2(106.333, 5.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree10" type="Sprite2D" parent="Collection3"]
+position = Vector2(92, -1.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree11" type="Sprite2D" parent="Collection3"]
+position = Vector2(118, 9)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree12" type="Sprite2D" parent="Collection3"]
+position = Vector2(66.3334, 11)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree13" type="Sprite2D" parent="Collection3"]
+position = Vector2(82.3334, 2)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree14" type="Sprite2D" parent="Collection3"]
+position = Vector2(98.3334, 13.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree15" type="Sprite2D" parent="Collection3"]
+position = Vector2(51.6667, 3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree16" type="Sprite2D" parent="Collection3"]
+position = Vector2(79, 14)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
 [node name="Collection4" type="Node2D" parent="."]
 visible = false
 
@@ -205,6 +337,54 @@ texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(44, 5, 27, 28)
 
+[node name="tree6" type="Sprite2D" parent="Collection4"]
+position = Vector2(96.6667, 7.15256e-06)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection4"]
+position = Vector2(82.3334, -7.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection4"]
+position = Vector2(108.333, 3.33334)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection4"]
+position = Vector2(56.6667, 5.33334)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection4"]
+position = Vector2(72.6667, -3.66666)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection4"]
+position = Vector2(88.6667, 7.66664)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection4"]
+position = Vector2(42, -2.66666)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection4"]
+position = Vector2(69.3334, 8.33334)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
 [node name="Collection5" type="Node2D" parent="."]
 visible = false
 
@@ -219,6 +399,54 @@ position = Vector2(-23.6667, 5.66667)
 texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(44, 5, 27, 28)
+
+[node name="tree6" type="Sprite2D" parent="Collection5"]
+position = Vector2(95, -0.666667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection5"]
+position = Vector2(80.3333, -12)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection5"]
+position = Vector2(109.333, -7.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection5"]
+position = Vector2(48, -4)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection5"]
+position = Vector2(60.6667, -11.3333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection5"]
+position = Vector2(70, 0.666667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection5"]
+position = Vector2(-27.6667, -4)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection5"]
+position = Vector2(-49.3333, -9.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
 
 [node name="Collection6" type="Node2D" parent="."]
 visible = false
@@ -248,6 +476,54 @@ texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(175, 9, 32, 28)
 
+[node name="tree6" type="Sprite2D" parent="Collection6"]
+position = Vector2(-86, 0.666667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection6"]
+position = Vector2(-64.3333, -1)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection6"]
+position = Vector2(109, 2.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection6"]
+position = Vector2(-23.6667, 3.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection6"]
+position = Vector2(64, -6.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection6"]
+position = Vector2(84.6667, -5)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection6"]
+position = Vector2(48.6667, 1.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection6"]
+position = Vector2(-41.3333, -5.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
 [node name="Collection7" type="Node2D" parent="."]
 visible = false
 
@@ -272,6 +548,54 @@ region_rect = Rect2(22, 5, 22, 28)
 [node name="tree" type="Sprite2D" parent="Collection7/tree/tree"]
 visible = false
 position = Vector2(-34.3333, 6)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree6" type="Sprite2D" parent="Collection7"]
+position = Vector2(103.333, -3.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection7"]
+position = Vector2(82, -5.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection7"]
+position = Vector2(60.6667, -10)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection7"]
+position = Vector2(45, -10.6667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection7"]
+position = Vector2(72.3334, -1.66666)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection7"]
+position = Vector2(-24.6667, -4.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection7"]
+position = Vector2(41.6667, -0.666664)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree9" type="Sprite2D" parent="Collection7"]
+position = Vector2(132.333, -5.66667)
 texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(22, 5, 22, 28)
@@ -321,6 +645,54 @@ texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(211, 22, 15, 12)
 
+[node name="tree6" type="Sprite2D" parent="Collection8"]
+position = Vector2(99.3333, 5.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection8"]
+position = Vector2(76, 6.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection8"]
+position = Vector2(61.6667, 3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection8"]
+position = Vector2(45.3333, -4.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection8"]
+position = Vector2(-18.6667, -1)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection8"]
+position = Vector2(-47.3333, 6.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection8"]
+position = Vector2(-36.6667, -4.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection8"]
+position = Vector2(-62.6667, 0.333333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
 [node name="Collection9" type="Node2D" parent="."]
 visible = false
 
@@ -369,6 +741,54 @@ texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(44, 5, 27, 28)
 
+[node name="tree6" type="Sprite2D" parent="Collection9"]
+position = Vector2(146, -0.333334)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection9"]
+position = Vector2(171.333, 7.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection9"]
+position = Vector2(14.6667, -9)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection9"]
+position = Vector2(-43.3333, -1.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection9"]
+position = Vector2(-16, 8.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection9"]
+position = Vector2(125.333, -0.333334)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection9"]
+position = Vector2(-30.6667, 0.999999)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection9"]
+position = Vector2(103.667, 5)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
 [node name="Collection10" type="Node2D" parent="."]
 visible = false
 
@@ -379,7 +799,7 @@ region_enabled = true
 region_rect = Rect2(156, 19, 18, 18)
 
 [node name="sheep" type="Sprite2D" parent="Collection10/sheep"]
-position = Vector2(14.3333, 6.33333)
+position = Vector2(19.3333, 8)
 texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(156, 19, 18, 18)
@@ -396,5 +816,66 @@ texture = ExtResource("2_t86xm")
 region_enabled = true
 region_rect = Rect2(156, 19, 18, 18)
 
+[node name="tree6" type="Sprite2D" parent="Collection10"]
+position = Vector2(114.333, 3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree7" type="Sprite2D" parent="Collection10"]
+position = Vector2(17, -3)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree3" type="Sprite2D" parent="Collection10"]
+position = Vector2(96, -1)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree2" type="Sprite2D" parent="Collection10"]
+position = Vector2(-16, 9)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree" type="Sprite2D" parent="Collection10"]
+position = Vector2(-4, 1)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree4" type="Sprite2D" parent="Collection10"]
+position = Vector2(53.6667, -1.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree5" type="Sprite2D" parent="Collection10"]
+position = Vector2(-30.6667, 0.999999)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="tree8" type="Sprite2D" parent="Collection10"]
+position = Vector2(68.6667, 3.66667)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(22, 5, 22, 28)
+
+[node name="sheep2" type="Sprite2D" parent="Collection10"]
+position = Vector2(-47.3333, 11)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(156, 19, 18, 18)
+
+[node name="sheep3" type="Sprite2D" parent="Collection10"]
+position = Vector2(134, 8.33333)
+texture = ExtResource("2_t86xm")
+region_enabled = true
+region_rect = Rect2(156, 19, 18, 18)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-88.3333, -21)
 shape = SubResource("RectangleShape2D_gii10")

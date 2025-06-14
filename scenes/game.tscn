@@ -4,66 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://cd3qsevhtif3y" path="res://assets/sprites/level1-background.png" id="2_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bgxyohufvb5ej" path="res://scenes/player.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://tgobscv1eu61" path="res://scenes/score_keeper.tscn" id="5_iywne"]
-[ext_resource type="AudioStream" uid="uid://bvti7sq2too8j" path="res://assets/music/maniac_-_rockit.mp3" id="5_p57ef"]
+[ext_resource type="AudioStream" uid="uid://duljead6876qb" path="res://assets/music/rock2.ogg" id="5_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://s176vt7i1ra4" path="res://scenes/scene_items_handler.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://dla83m2jj3gs4" path="res://scenes/boss-level1.tscn" id="8_gee14"]
+[ext_resource type="AudioStream" uid="uid://c4yn0354pw4ej" path="res://assets/music/Heavy-Metal-JRPG-style_AdobeStock_353751747_preview.ogg" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://c0danah31h615" path="res://scenes/oooops.tscn" id="8_gee14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(20, 392)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(1558, 5)
-
-[sub_resource type="GDScript" id="GDScript_u5sy4"]
-script/source = "extends Node2D
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-@onready var bureaucrat = preload(\"res://scenes/obstacle.tscn\")
-@onready var voter = preload(\"res://scenes/character.tscn\")
-@onready var powerup = preload(\"res://scenes/powerup.tscn\")
-var lives = 40;
-var index = 0;
-
-func init():
-	#GameScene = get_tree().current_scene;
-	start_sequence()
-	#await get_tree().create_timer(400.0).timeout
-#	run_sequence(post_60_seconds_sequence)
-	
-func start_sequence():
-	if index >= sequence.size():
-		index = round(sequence.size() / 2)
-	var step = sequence[index]	
-	step.action.call() # kaller spawn_hole(), spawn_car() osv.
-	await get_tree().create_timer(step.delay).timeout
-	if Global.speed > 0:
-		index += 1
-		start_sequence()
-			
-func spawner(y, scene):
-	var x = Global.screen_size.x + 100
-	var item = scene.instantiate()
-	item.global_position = Vector2(x,y)
-	add_child(item)
-
-
-
-
-
-
-var sequence = [
-	{ \"delay\": 1.0, \"action\": func(): spawner(0, powerup) },
-	{ \"delay\": 1.0, \"action\": func(): spawner(0, powerup) },
-]
-"
 
 [node name="Game" type="Node2D"]
 position = Vector2(1, 1)
@@ -116,11 +66,15 @@ position = Vector2(-751, 223.5)
 shape = SubResource("RectangleShape2D_p57ef")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_p57ef")
+stream = ExtResource("5_u5sy4")
 bus = &"background"
 
 [node name="SceneItemsHandler" parent="." instance=ExtResource("6_p57ef")]
-script = SubResource("GDScript_u5sy4")
 
-[node name="Boss" parent="." instance=ExtResource("8_gee14")]
-position = Vector2(408, -42)
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_u5sy4")
+bus = &"background"
+
+[node name="GameOver" parent="." instance=ExtResource("8_gee14")]
+visible = false
+position = Vector2(-454, -297)

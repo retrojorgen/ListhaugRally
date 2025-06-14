@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://gnqfcq4npstj"]
+
+[ext_resource type="PackedScene" uid="uid://geqkh5trrxmw" path="res://scenes/hole.tscn" id="2_8u000"]
+
+[node name="HoleWall3" type="Node2D"]
+
+[node name="hole7" parent="." instance=ExtResource("2_8u000")]
+position = Vector2(19, 49)
+scale = Vector2(1, 1)
+
+[node name="hole" parent="." instance=ExtResource("2_8u000")]
+position = Vector2(-22, -9)
+scale = Vector2(1, 1)
+
+[node name="hole3" parent="." instance=ExtResource("2_8u000")]
+position = Vector2(-10, 12)
+scale = Vector2(1, 1)
+
+[node name="hole4" parent="." instance=ExtResource("2_8u000")]
+position = Vector2(-35, -26)
+scale = Vector2(1, 1)
+
+[node name="hole5" parent="." instance=ExtResource("2_8u000")]
+position = Vector2(-47, -45)
+scale = Vector2(1, 1)
+
+[node name="hole6" parent="." instance=ExtResource("2_8u000")]
+position = Vector2(5, 31)
+scale = Vector2(1, 1)
+
+[node name="hole8" parent="." instance=ExtResource("2_8u000")]
+position = Vector2(33, 66)
+scale = Vector2(1, 1)

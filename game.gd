@@ -6,6 +6,10 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var background_music: AudioStreamPlayer = $BackgroundMusic
 @onready var scene_items_handler: Node2D = $SceneItemsHandler
+@onready var boss = preload("res://scenes/boss-level1.tscn")
+@onready var boss_music = $BossMusic
+@onready var game_over: Node2D = $GameOver
+
 #@onready var spawn_timer: Timer = $SpawnTimer
 #@onready var screen_size = get_viewport_rect().size
 #@onready var character_timer: Timer = $CharacterTimer
@@ -14,8 +18,10 @@ extends Node2D
 #var background_speed := 200
 #var voters := 0;
 #var collectedVoters = 0;
-
+#var maxCollectedVoters = 20
 signal values
+var bossToggle = false
+var bossInstance = null
 
 func increaseWaffles():
 	Global.waffles += 1
@@ -37,7 +43,18 @@ func removeInvincible():
 func toggleJumping():
 	Global.is_jumping = !Global.is_jumping
 
-
+func restartGame():
+	game_over.visible = false
+	Global.previousSpeed = 600
+	Global.speed = 600
+	Global.lives = 4
+	Global.voters = 0
+	parallax_background.scroll_base_offset.x = 0
+	Global.collectedVoters = 0
+	emit_signal("values")
+	player.showCar()
+	init()
+	scene_items_handler.restart()
 # if an enemy causes the player to lose a voter
 func decreaseVoters():
 	if Global.voters == 0:
@@ -71,7 +88,10 @@ func decreaseLife():
 # when the player has no lives left the game should stop, and we should show a game over screen
 func gameOver():
 	#stop the game
+	stopGame()
 	print("game over")
+	game_over.visible = true
+	game_over.playAnimation()
 	emit_signal("values")
 
 # Stop the game by pausing the speed
@@ -82,20 +102,44 @@ func stopGame():
 
 # Start the game by setting the speed back to what it was before it was paused		
 func startGame():
-	scene_items_handler.start_sequence()
 	Global.speed = Global.previousSpeed	
+	scene_items_handler.init()
 	emit_signal("values")
+	if bossToggle:
+		bossInstance.init()
+		print("restart boss")
 
 # Moves the voters into the collectedVoters counter
+
+
+func initBoss():
+	fade_out_music()
+	$BossMusic.play()
+	print("init boss")
+	bossInstance = boss.instantiate()
+	#bossInstance.global_position=Vector()
+	#item.scale = Vector2(1.0, 1.0)
+	bossInstance.global_position = Vector2(408,-42)
+	add_child(bossInstance)
+	
+	
 func collectVoters():
 	Global.collectedVoters += Global.voters
 	Global.voters = 0
+	if Global.collectedVoters >= Global.maxCollectedVoters and !bossToggle:
+		bossToggle = true
+		initBoss()
 	emit_signal("values")
-		
-func _ready():
-	
+
+
+func init():
+	background_music.stop()
 	background_music.play()
 	scene_items_handler.init()
+	
+func _ready():
+	init()
+	
 
 #moves the parallax background scroller	
 func _physics_process(delta):
@@ -112,7 +156,9 @@ func _on_locale_collision():
 	Global.voters = 0
 	emit_signal("values")
 	
-
+func fade_out_music():
+	var tween = create_tween()
+	tween.tween_property(background_music, "volume_db", -80, 1.0)
 #func _on_obstacle_collision():
 #	if !Global.is_invincible:
 #		if Global.voters > 0:
