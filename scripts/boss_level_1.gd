@@ -94,7 +94,7 @@ func start_sequence():
 			
 func spawner(y, scene):
 	$SpeechPlayer.play("magic")
-	print("spawning")
+	#print("spawning")
 	var x = 0
 	var item = scene.instantiate()
 	item.scale = Vector2(1.0, 1.0)

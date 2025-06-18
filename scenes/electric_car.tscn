@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4ik43c77p0ej"]
 
-[ext_resource type="Script" uid="uid://bjv7vd064ah2r" path="res://scenes/electric_car.gd" id="1_e6srs"]
+[ext_resource type="Script" uid="uid://bjv7vd064ah2r" path="res://electric_car.gd" id="1_e6srs"]
 [ext_resource type="Texture2D" uid="uid://bwjpruq5418py" path="res://assets/sprites/bil-animasjon.png" id="2_374tp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7uf3"]

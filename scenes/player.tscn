@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bgxyohufvb5ej"]
 
-[ext_resource type="Script" uid="uid://bguwbcr1j2ns6" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://bguwbcr1j2ns6" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://chi7u3f81xyoh" path="res://assets/sprites/main-character.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bwjpruq5418py" path="res://assets/sprites/bil-animasjon.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://cykvh25is5yp3" path="res://assets/sprites/apple.png" id="4_dqkch"]

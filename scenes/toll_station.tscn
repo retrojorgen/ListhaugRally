@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://duyfjpkuqnp0c"]
 
-[ext_resource type="Script" uid="uid://c3ysxidbncyru" path="res://scenes/toll_station.gd" id="1_mvmqy"]
+[ext_resource type="Script" uid="uid://c3ysxidbncyru" path="res://scripts/toll_station.gd" id="1_mvmqy"]
 [ext_resource type="Texture2D" uid="uid://bwjpruq5418py" path="res://assets/sprites/bil-animasjon.png" id="1_qpk5r"]
 [ext_resource type="Texture2D" uid="uid://cd3qsevhtif3y" path="res://assets/sprites/level1-background.png" id="3_gdq5f"]
 

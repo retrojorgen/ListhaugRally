@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://geqkh5trrxmw"]
 
-[ext_resource type="Script" uid="uid://cxw1qniyj5aqo" path="res://scenes/hole.gd" id="1_iyxdx"]
+[ext_resource type="Script" uid="uid://cxw1qniyj5aqo" path="res://hole.gd" id="1_iyxdx"]
 [ext_resource type="Texture2D" uid="uid://cmjjg84ajogrt" path="res://assets/sprites/waffle-character.png" id="1_lerre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyxdx"]

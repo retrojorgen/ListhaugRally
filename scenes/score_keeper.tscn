@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://tgobscv1eu61"]
 
-[ext_resource type="Script" uid="uid://bkn7lxbd7wblk" path="res://scenes/score_keeper.gd" id="1_xi53c"]
+[ext_resource type="Script" uid="uid://bkn7lxbd7wblk" path="res://scripts/score_keeper.gd" id="1_xi53c"]
 [ext_resource type="FontFile" uid="uid://dngxwutr0yk4e" path="res://assets/fonts/PixelOperator8.ttf" id="2_efoji"]
 [ext_resource type="Texture2D" uid="uid://cmjjg84ajogrt" path="res://assets/sprites/waffle-character.png" id="2_xi53c"]
 [ext_resource type="FontFile" uid="uid://dploqk3avhkrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_xi53c"]

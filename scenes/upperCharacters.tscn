@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://f3cip2w7po54"]
 
-[ext_resource type="Script" uid="uid://nfo5snoe6e0u" path="res://upperCharacters.gd" id="1_v8i3t"]
+[ext_resource type="Script" uid="uid://nfo5snoe6e0u" path="res://scripts/upperCharacters.gd" id="1_v8i3t"]
 [ext_resource type="Texture2D" uid="uid://2y4tcohtv1vm" path="res://assets/sprites/landscape-characters.png" id="2_t86xm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gii10"]

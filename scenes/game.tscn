@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b2rbb7fg0e73y"]
 
-[ext_resource type="Script" uid="uid://du2ensvbthanw" path="res://game.gd" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://du2ensvbthanw" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://cd3qsevhtif3y" path="res://assets/sprites/level1-background.png" id="2_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bgxyohufvb5ej" path="res://scenes/player.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://tgobscv1eu61" path="res://scenes/score_keeper.tscn" id="5_iywne"]

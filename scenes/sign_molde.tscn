@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://vt4ffkr6sk45"]
 
-[ext_resource type="Script" uid="uid://dni1knad2home" path="res://scenes/upperLandscape.gd" id="1_6wyvg"]
+[ext_resource type="Script" uid="uid://dni1knad2home" path="res://scripts/upperLandscape.gd" id="1_6wyvg"]
 [ext_resource type="Texture2D" uid="uid://d1dlhkona482x" path="res://assets/sprites/skilt.png" id="1_j34nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0uf5u"]
 size = Vector2(77.3333, 38)
 
 [node name="SignMolde" type="Area2D"]
+z_index = 1
 scale = Vector2(3, 3)
 script = ExtResource("1_6wyvg")
 
