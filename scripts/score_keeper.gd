@@ -33,7 +33,12 @@ func update_collected_voters_bar(current_value: int):
 	#$CollectedVoters/filledbar.region.size.x = Global.collectedVoters
 	
 func updateValues():
-	print("updating values ",Global.lives)
+	#print("updating values ",Global.lives)
+	if Global.lives == 0:
+		main_character_1.visible = false
+		main_character_2.visible = false
+		main_character_3.visible = false
+		main_character_4.visible = false
 	if Global.lives == 1:
 		main_character_1.visible = true
 		main_character_2.visible = false

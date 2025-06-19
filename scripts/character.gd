@@ -3,23 +3,35 @@ extends Area2D
 
 #@export var speed :=200.0
 var float_after_character_ready = false
+var move_toggle = false
 signal character
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position.x -= Global.speed * delta
+	if !move_toggle:
+		global_position.x -= Global.speed * delta
 
 	
 	
 func _on_body_entered(body: Node2D) -> void:
+	#print("hello")
 	if body.name == "Player" and !float_after_character_ready:
 		emit_signal("character")
 		body.voterCollision()
 		queue_free()
 	#pass # Replace with function body.
 
+func disable():
+	visible = false
+	move_toggle = true
+	collision_shape_2d.disabled = true
 
+
+func enable():
+	visible = true
+	collision_shape_2d.disabled = false
+	
 func float():
-	print("hello")
+	#print("hello")
 	collision_shape_2d.disabled = false
 	$AnimationPlayer.play("float")
 	

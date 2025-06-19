@@ -52,31 +52,37 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.996667)
 colors = PackedColorArray(1, 0, 0, 1, 0.20976, 0, 0.0592834, 1)
 
-[node name="obstacle" type="Area2D"]
+[node name="obstacle" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_drdry")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Bureucrat" type="Area2D" parent="."]
+scale = Vector2(0.333333, 0.333333)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bureucrat"]
 visible = false
-position = Vector2(-38, -20)
-scale = Vector2(3, 3)
+position = Vector2(-114, -60)
+scale = Vector2(9, 9)
 texture = ExtResource("2_cjuko")
 offset = Vector2(12, 7.66667)
 region_enabled = true
 region_rect = Rect2(76, 12, 16, 13)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.58946e-07, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bureucrat"]
+position = Vector2(-4.76838e-07, 1.5)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_sh7k1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-4, -3)
-scale = Vector2(-1, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bureucrat"]
+position = Vector2(-1, -15)
+rotation = 3.14159
+scale = Vector2(3, -3)
 sprite_frames = SubResource("SpriteFrames_bcfqo")
 autoplay = "default"
 frame_progress = 0.637555
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Bureucrat"]
+scale = Vector2(3, 3)
 emitting = false
 amount = 40
 lifetime = 0.5
@@ -93,5 +99,5 @@ scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_cjuko")
 color_ramp = SubResource("Gradient_sh7k1")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Bureucrat" to="." method="_on_bureucrat_area_entered"]
+[connection signal="body_entered" from="Bureucrat" to="." method="_on_bureucrat_body_entered"]

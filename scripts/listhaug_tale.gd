@@ -14,7 +14,7 @@ func _ready() -> void:
 func start_speech_timer():
 	await get_tree().create_timer(60.0).timeout
 	speechPlayed = true
-	print("60 sekunder har gått — speechPlayed = true")    
+	#print("60 sekunder har gått — speechPlayed = true")    
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,12 +32,12 @@ func jump_to_next_step():
 	if next_step >= anim_length:
 		next_step = anim_length
 		speechPlayed = true
-		print("Animasjonen er ferdig eller på siste steg.")
+		#print("Animasjonen er ferdig eller på siste steg.")
 	else:
 		anim_player.seek(next_step, true)
 		if next_step == 60:
 			speechPlayed = true
-		print("Hopper til tid: ", next_step)
+		#print("Hopper til tid: ", next_step)
 
 
 func _input(event):
@@ -45,6 +45,6 @@ func _input(event):
 		jump_to_next_step()
 	else:	
 		if event is InputEventKey and event.pressed and speechPlayed == true:
-			print("laster neste scene")
+			#print("laster neste scene")
 			var new_scene = load("res://scenes/game.tscn") as PackedScene
 			get_tree().change_scene_to_packed(new_scene)

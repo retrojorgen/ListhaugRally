@@ -1,25 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://ck0v5cryo7mbr"]
+[gd_scene load_steps=13 format=3 uid="uid://ck0v5cryo7mbr"]
 
 [ext_resource type="Script" uid="uid://ix07ux863m4e" path="res://scripts/listhaug_tale.gd" id="1_bylqy"]
-[ext_resource type="Texture2D" uid="uid://cwl1yotsaqj8a" path="res://assets/sprites/listhaug-animation.png" id="2_f0yfd"]
+[ext_resource type="Texture2D" uid="uid://cglipl42pa2he" path="res://assets/sprites/listhaugcanon-animation.png" id="2_f0yfd"]
+[ext_resource type="Texture2D" uid="uid://ci3i8hkvyg5ux" path="res://assets/sprites/listhaug-speech-sprite-animation.png" id="3_0p03a"]
 [ext_resource type="FontFile" uid="uid://dngxwutr0yk4e" path="res://assets/fonts/PixelOperator8.ttf" id="3_d8akg"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0p03a"]
-atlas = ExtResource("2_f0yfd")
-region = Rect2(0, 0, 320, 180)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdsvt"]
 atlas = ExtResource("2_f0yfd")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqt61"]
+atlas = ExtResource("2_f0yfd")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wf7l"]
+atlas = ExtResource("3_0p03a")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omybl"]
+atlas = ExtResource("3_0p03a")
 region = Rect2(320, 0, 320, 180)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oqt61"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0p03a")
+"texture": SubResource("AtlasTexture_wdsvt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wdsvt")
+"texture": SubResource("AtlasTexture_oqt61")
+}],
+"loop": true,
+"name": &"canon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wf7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omybl")
 }],
 "loop": true,
 "name": &"default",
@@ -87,6 +107,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sprite2D:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
 }
 
 [sub_resource type="Animation" id="Animation_0wf7l"]
@@ -164,6 +196,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sprite2D:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(22.5, 36.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"default", &"canon"]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_by6wu"]
 _data = {
@@ -182,6 +226,13 @@ position = Vector2(477, 267)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_oqt61")
 autoplay = "default"
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(477, 267)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_oqt61")
+autoplay = "default"
 frame_progress = 0.524061
 
 [node name="first" type="Label" parent="."]
@@ -193,29 +244,29 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_d8akg")
 text = "Tjære vennå. Det er krise i Noreg.
 Heile landet vårt e forpesta av
-teite bomstasjona, irriterende
-hull i vegane,innvandrara som 
-laga bettre mat enn oss, 
-for gode offentlige barnehagar, 
-og byråkratar som nektar oss å 
-bygge gigantiske fjøs overalt!"
+teite bomstasjona, eletrikse bila
+som itsje bråker nok, byråkratar
+som nektar meg å bygge om fjøset
+mitt til en sweatshop, og ikke
+minst, hullete vegar."
 visible_characters = 0
 visible_ratio = 0.0
 
 [node name="second" type="Label" parent="."]
-offset_left = 467.0
-offset_top = 66.0
-offset_right = 897.0
-offset_bottom = 234.0
+offset_left = 471.0
+offset_top = 68.0
+offset_right = 901.0
+offset_bottom = 236.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_d8akg")
-text = "Det må vi få stansat. Vi skal
-vinne valget, slik at alle våre
-sinnsjuke idea skal kunne bli
-verkelegheit!
+text = "Det må vi få stansat. Kvisleis kan 
+me godta at eg itsje skal få
+mi eiga sweatshop?
 
-men, korsleis skal me få det til,
-spøyr du?"
+Eg trudde me budde i Noreg?
+Derfor må me vinne valet, ellers
+får me itsje gjere som me vil,
+basta, to fingre i bakken."
 
 [node name="third" type="Label" parent="."]
 offset_left = 468.0
@@ -224,12 +275,13 @@ offset_right = 898.0
 offset_bottom = 234.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_d8akg")
-text = "Det var eit godt spørsmål.
-Utruleg godt faktisk.
+text = "Så ka ska me gjere?
+Eg er glad du spør. I har jobbet
+med dei smartaste vitenskaps-
+menna i FRPs arsenal.
 
-Kom du på det sjøl? Fordi no
-ble eg veldig imponert over
-spørsmålet. Det må eg seie."
+og me har utvikla eit hemmelig
+vapen."
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -240,14 +292,15 @@ offset_right = 902.0
 offset_bottom = 237.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_d8akg")
-text = "Svaret e enkelt.
+text = "Fakking vaffelkastar 2000!
+Eit treff av denne kanonen kan
+konvertere selv den sureste
+rødstrømpe til ei vaskekte FRPer!
 
-Eg skal på roadtrip.
-Eg skal kjøyre frå Molde til Oslo
-og personleg redde alle
-stemmegivare fra dei fryktelege
-forholda i Noreg, og levere dei
-trygt i valgbodane."
+Men kvisleis skal me sikre at
+	                  heile Noreg skal få
+                   smaka på vafflane?
+             "
 
 [node name="fifth" type="Label" parent="."]
 offset_left = 473.0
@@ -256,21 +309,18 @@ offset_right = 903.0
 offset_bottom = 237.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_d8akg")
-text = "Og så skal me ete vafflar saman.
-Nokre fleire spysmal....?
-
-Kvifor eg aldri blunkar?
-Kvifor eg aldri tek ned handa?
-EG HE ITSJE TID TIL SLIK SNAKK.
-EG SKAL REDDE NOREG!"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../fifth")
-libraries = {
-&"": SubResource("AnimationLibrary_by6wu")
-}
+text = "Eg skal på roadtrip! Vi skal
+montere denne kanonen på mi
+eiga bensinslukande monstertruck.
+Og så skal eg reise fra Molde til
+Oslo og plaffe løs! Deretter skal 
+eg personleg levere dei ferske 
+              FRP-erane i valboden. Og
+               alle vaflane som er til
+               overs, dei et me selv!"
 
 [node name="sixth" type="Label" parent="."]
+visible = false
 offset_left = 455.0
 offset_top = 104.0
 offset_right = 917.0
@@ -281,3 +331,9 @@ text = "Trykk på
  any-knappen 
 for å fortsette"
 horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../fifth")
+libraries = {
+&"": SubResource("AnimationLibrary_by6wu")
+}

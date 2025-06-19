@@ -77,8 +77,10 @@ func loseVoters():
 
 func decreaseLife():
 	#make sure the voters are set to 0. This should already be a fact most of the times.
+	
 	Global.voters = 0
 	Global.lives -= 1
+	print("decreasing life", Global.lives)
 	removeWaffles()
 	emit_signal("values")
 	if Global.lives == 0:
@@ -107,7 +109,7 @@ func startGame():
 	emit_signal("values")
 	if bossToggle:
 		bossInstance.init()
-		print("restart boss")
+		#print("restart boss")
 
 # Moves the voters into the collectedVoters counter
 
@@ -115,7 +117,7 @@ func startGame():
 func initBoss():
 	fade_out_music()
 	$BossMusic.play()
-	print("init boss")
+	#print("init boss")
 	bossInstance = boss.instantiate()
 	#bossInstance.global_position=Vector()
 	#item.scale = Vector2(1.0, 1.0)

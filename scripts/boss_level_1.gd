@@ -66,7 +66,7 @@ func hit():
 	
 func init():
 	#GameScene = get_tree().current_scene;
-	print("starting animation")
+	#print("starting animation")
 	start_sequence()
 	#await get_tree().create_timer(400.0).timeout
 #	run_sequence(post_60_seconds_sequence)

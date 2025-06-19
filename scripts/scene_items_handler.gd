@@ -35,7 +35,7 @@ func _ready():
 	
 func init():
 	#GameScene = get_tree().current_scene;
-	print("is this running?")
+	#print("is this running?")
 	start_sequence()
 	start_background()
 	#await get_tree().create_timer(400.0).timeout
@@ -67,7 +67,8 @@ func start_sequence():
 		var step = current_sequence[index]	
 		if Global.speed > 0:
 			step.action.call() # kaller spawn_hole(), spawn_car() osv.
-			await get_tree().create_timer(step.delay).timeout
+			if step.delay > 0:
+				await get_tree().create_timer(step.delay).timeout
 			index += 1
 			
 			start_sequence()
@@ -77,7 +78,7 @@ func randomYPosOnTrack():
 		return randi_range(Global.TOP_OF_TRACK, Global.BOTTOM_OF_TRACK)
 
 func restart():
-	print("Restarting game scene")
+	#print("Restarting game scene")
 
 	# Fjern alle spawnede objekter
 	for child in get_children():
@@ -103,40 +104,27 @@ var sequence = [
 	{ "delay": 1.0, "action": func(): spawner(Global.TOP_OF_LEVEL, sign_molde) },
 	{ "delay": 1.0, "action": func(): spawner(0, bureaucrat) },
 	{ "delay": 1.0, "action": func(): spawner(50, bureaucrat) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
-	{ "delay": 1.0, "action": func(): spawner(Global.TOP_OF_LEVEL, upper_characters) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(Global.TOP_OF_LEVEL, upper_characters) },
-	{ "delay": 1.0, "action": func(): spawner(40, toll_station) },
+	{ "delay": 0.0, "action": func(): spawner(0, hole) },
+	{ "delay": 1.0, "action": func(): spawner(200, bureaucrat) },
+	{ "delay": 1.0, "action": func(): spawner(150, bureaucrat) },
 	{ "delay": 0.0, "action": func(): spawner(0, hole) },
 	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
-	{ "delay": 1.0, "action": func(): spawner(20, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(Global.TOP_OF_LEVEL, upper_characters) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 0.0, "action": func(): spawner(10, hole) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(Global.TOP_OF_LEVEL, upper_characters) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	
+	{ "delay": 1.0, "action": func(): spawner(40, bureaucrat) },
+	{ "delay": 1.0, "action": func(): spawner(100, bureaucrat) },
+	{ "delay": 0.0, "action": func(): spawner(0, hole) },
+	{ "delay": 0.0, "action": func(): spawner(200, hole) },
 	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
+	{ "delay": 1.0, "action": func(): spawner(0, bureaucrat) },
+	{ "delay": 1.0, "action": func(): spawner(50, bureaucrat) },
+	{ "delay": 0.0, "action": func(): spawner(0, hole) },
 ]
 
 var sequence_middle = [
-	{ "delay": 1.0, "action": func(): spawner(Global.TOP_OF_LEVEL, sign_molde) },
 	{ "delay": 0.2, "action": func(): spawner(0, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(100, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(150, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(50, bureaucrat) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
 	{ "delay": 1.0, "action": func(): spawner(40, toll_station) },
-	
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
 	{ "delay": 0.2, "action": func(): spawner(0, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(50, bureaucrat) },
 	{ "delay": 0.0, "action": func(): spawner(0, wall4) },
@@ -145,12 +133,10 @@ var sequence_middle = [
 	{ "delay": 0.2, "action": func(): spawner(60, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(80, bureaucrat) },
 	{ "delay": 1.0, "action": func(): spawner(100, bureaucrat) },
-	{ "delay": 1.0, "action": func(): spawner(40, voter) },
 	{ "delay": 0.2, "action": func(): spawner(120, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(160, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(180, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(200, bureaucrat) },
-	
 	{ "delay": 1.0, "action": func(): spawner(40, toll_station) },
 	{ "delay": 0.0, "action": func(): spawner(40, wall4) },
 	{ "delay": 0.2, "action": func(): spawner(20, bureaucrat) },
@@ -161,18 +147,10 @@ var sequence_middle = [
 	{ "delay": 0.4, "action": func(): spawner(80, bureaucrat) },
 	{ "delay": 0.6, "action": func(): spawner(120, bureaucrat) },
 	{ "delay": 1.0, "action": func(): spawner(160, bureaucrat) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
 	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
 	{ "delay": 0.0, "action": func(): spawner(40, wall4) },
 	{ "delay": 1.0, "action": func(): spawner(40, toll_station) },
 	{ "delay": 0.0, "action": func(): spawner(40, hole) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
 	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
 ]
 
@@ -182,11 +160,10 @@ var sequence_main = [
 	{ "delay": 0.2, "action": func(): spawner(100, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(150, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(50, bureaucrat) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
+	
 	{ "delay": 1.0, "action": func(): spawner(40, toll_station) },
 	
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
+	
 	{ "delay": 0.2, "action": func(): spawner(0, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(50, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(100, bureaucrat) },
@@ -203,7 +180,7 @@ var sequence_main = [
 	{ "delay": 2, "action": func(): spawner(200, wall4) },
 	{ "delay": 2, "action": func(): spawner(100, wall4) },
 	{ "delay": 2, "action": func(): spawner(200, wall4) },
-	{ "delay": 1.0, "action": func(): spawner(40, voter) },
+	
 	{ "delay": 0.2, "action": func(): spawner(120, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(160, bureaucrat) },
 	{ "delay": 0.2, "action": func(): spawner(180, bureaucrat) },
@@ -221,18 +198,15 @@ var sequence_main = [
 	{ "delay": 0.0, "action": func(): spawner(120, bureaucrat) },
 	{ "delay": 1.0, "action": func(): spawner(160, bureaucrat) },
 	{ "delay": 1.0, "action": func(): spawner(100, electric_car) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
 	
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
+	
+	
 	{ "delay": 0.0, "action": func(): spawner(0, hole) },
 	{ "delay": 1.0, "action": func(): spawner(40, toll_station) },
 	{ "delay": 0.0, "action": func(): spawner(40, hole) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
+	
 	{ "delay": 1.0, "action": func(): spawner(100, electric_car) },
 	{ "delay": 1.0, "action": func(): spawner(200, electric_car) },
-	#{ "delay": 1.0, "action": func(): spawner(Global.TOP_OF_LEVEL, upper_characters) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
-	{ "delay": 1.0, "action": func(): spawner(0, voter) },
+	
 	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
 ]

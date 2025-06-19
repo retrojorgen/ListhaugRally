@@ -1,7 +1,9 @@
-extends Area2D
-@onready var obstacle_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+extends Node2D
+@onready var obstacle_sprite: AnimatedSprite2D = $Bureucrat/AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $Bureucrat/CollisionShape2D
+@onready var cpu_particles_2d: CPUParticles2D = $Bureucrat/CPUParticles2D
+
+@onready var voter = preload("res://scenes/character.tscn")
 var player: Node
 var can_damage = true
 
@@ -16,7 +18,6 @@ func _process(delta):
 		global_position.y += (100) * delta
 	if player.global_position.y < global_position.y:
 		global_position.y -= (100) * delta	
-
 
 
 
@@ -37,6 +38,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if body.name == "Player" and can_damage and !Global.is_invincible and !Global.is_jumping:		
 		body.hit()
+		
 		hit()
 		emit_signal("obstacle")
 	#print(body.name)
@@ -46,12 +48,18 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	#print(area.name)
 	if area.name.contains("waffle") and can_damage:
+		addCharacter()
 		hit()
 		area.queue_free()
+		
 	if area.name == "StopItems":
 		queue_free()
 
-
+func addCharacter():
+	var item = voter.instantiate()
+	item.global_position = Vector2(global_position.x,global_position.y)
+	get_tree().current_scene.add_child(item)
+	
 func hit():
 	# Gjør bilen hvit
 	if !collision_shape_2d.disabled:
@@ -59,8 +67,8 @@ func hit():
 		cpu_particles_2d.emitting = true
 		collision_shape_2d.disabled = true
 		obstacle_sprite.modulate = Color(3, 3, 3)
-		await get_tree().create_timer(0.1).timeout
 		obstacle_sprite.visible = false
+		
 		# Beveg litt bakover
 		#var knockback_distance := -50
 		#var knockback_speed := -500.0
@@ -73,5 +81,24 @@ func hit():
 		#	obstacle_sprite.visible = false		
 		#))
 		await get_tree().create_timer(0.2).timeout
-		queue_free()
 	
+
+
+func _on_bureucrat_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and can_damage and !Global.is_invincible and !Global.is_jumping:		
+		body.hit()
+		hit()
+		emit_signal("obstacle")
+	pass # Replace with function body.
+
+
+func _on_bureucrat_area_entered(area: Area2D) -> void:
+	#print(area.name)
+	if area.name.contains("waffle") and can_damage:
+		addCharacter()
+		hit()
+		area.queue_free()
+		
+	if area.name == "StopItems":
+		queue_free()
+	pass # Replace with function body.

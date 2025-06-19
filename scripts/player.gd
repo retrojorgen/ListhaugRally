@@ -45,7 +45,7 @@ func powerUp():
 #makes the player invincible for five seconds
 func flash():
 	Global.is_invincible = true
-	print("invincible")
+	#print("invincible")
 	var blinking := true
 
 	# Timer for blinking
@@ -72,7 +72,7 @@ func flash():
 	blink_timer.queue_free()
 	car_sprite.modulate.a = 1.0
 	sprite_2d.modulate.a = 1.0
-	print("not invicible")
+	#print("not invicible")
 	Global.is_invincible = false
 	
 # the main loop of the player
@@ -192,7 +192,7 @@ func explodeCar():
 	GameScene.stopGame()
 	Sounds.explosion.play()
 	#We have more tries left
-	if Global.lives > 1:
+	if Global.lives >= 1:
 		await get_tree().create_timer(2).timeout
 		car_sprite.visible = true
 		sprite_2d.visible = true
@@ -283,6 +283,7 @@ func _on_hit_finished():
 	resetBrightnessPlayer()
 	
 	if Global.voters < 1:
+		GameScene.decreaseLife()
 		explodeCar()
 	else:
 		loseAllVoters()

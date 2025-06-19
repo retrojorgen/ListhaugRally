@@ -27,7 +27,7 @@ func _on_toll_line_area_body_entered(body: Node2D) -> void:
 	#if line lose one voter
 	if body.name == "Player" and !Global.is_invincible and can_damage and !Global.is_jumping:
 		body.loseAllVoters()
-	print("line")
+	#print("line")
 	pass # Replace with function body.
 
 
@@ -37,10 +37,16 @@ func _on_camera_1_area_area_entered(area: Area2D) -> void:
 		$cameras/camera1area/camera1explosion.emitting = true
 		camera1Active = false
 		can_damage = false
+		addCharacter($cameras/camera1area/camera1sprite.global_position.x, $cameras/camera1area/camera1sprite.global_position.y)
 		area.queue_free()
+		
 	#pass # Replace with function body.
 
-
+func addCharacter(x,y):
+	var item =  preload("res://scenes/character.tscn").instantiate()
+	item.global_position = Vector2(x,y)
+	get_tree().current_scene.add_child(item)
+	
 func _on_toll_line_area_area_entered(area: Area2D) -> void:
 	if area.name == "StopItems":
 		queue_free()
