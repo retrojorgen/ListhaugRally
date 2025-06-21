@@ -38,37 +38,40 @@ func _ready():
 func init():
 	#GameScene = get_tree().current_scene;
 	#print("is this running?")
-	start_sequence()
-	start_background()
-	start_locale()
-	start_enemies()
-	#await get_tree().create_timer(400.0).timeout
-#	run_sequence(post_60_seconds_sequence)
+	start_sequence(Global.lives)
+	start_background(Global.lives)
+	await get_tree().create_timer(2.0).timeout
+	start_enemies(Global.lives)
+	await get_tree().create_timer(4.0).timeout
+	start_locale(Global.lives)
 
 
-func start_background():
+# Sending lives so that if lives are decreased the sequence stops.
+
+func start_background(lives):
 	var background = { "delay": 2.0, "action": func(): spawner(Global.TOP_OF_LEVEL- 40, upper_characters) }
 	if Global.speed > 0:
 			background.action.call() # kaller spawn_hole(), spawn_car() osv.
 			await get_tree().create_timer(background.delay).timeout
-			start_background()
+			start_background(Global.lives)
 
-func start_locale():
-	var background = { "delay": 2.0 * (sequenceIndex / 2), "action": func(): spawner(Global.TOP_OF_LEVEL, locale) }
-	if Global.speed > 0:
+func start_locale(lives):
+	var background = { "delay": 10 + (sequenceIndex * 2), "action": func(): spawner(Global.TOP_OF_LEVEL, locale) }
+	if Global.speed > 0 && Global.lives == lives && Global.collectedVoters < Global.maxCollectedVoters:
 			background.action.call() # kaller spawn_hole(), spawn_car() osv.
 			await get_tree().create_timer(background.delay).timeout
-			start_locale()
+			start_locale(Global.lives)
 
-func start_enemies():
-	var background = { "delay": 1.0 * (sequenceIndex), "action": func(): spawner(randomYPosOnLevel, locale) }
-	if Global.speed > 0:
+func start_enemies(lives):
+	#print(randomYPosOnLevel())
+	var background = { "delay": 1.5 + sequenceIndex, "action": func(): spawner(randomYPosOnLevel(), bureaucrat) }
+	if Global.speed > 0 && Global.lives == lives:
 			background.action.call() # kaller spawn_hole(), spawn_car() osv.
 			await get_tree().create_timer(background.delay).timeout
-			start_enemies()
+			start_enemies(Global.lives)
 		
-func start_sequence():
-	var current_sequence = sequence
+func start_sequence(lives):
+	var current_sequence = sequences
 	if Global.collectedVoters >= 10 && sequenceIndex < 1:
 		sequenceIndex = 1
 	
@@ -84,14 +87,15 @@ func start_sequence():
 	if Global.collectedVoters < Global.maxCollectedVoters:
 		if index >= sequences[sequenceIndex].size():
 			index = 0
-		var step = sequences[sequenceIndex][index]	
-		if Global.speed > 0:
+		var step = sequences[sequenceIndex][index]
+		#print(step, sequenceIndex, index)
+		if Global.speed > 0 && Global.lives == lives:
 			step.action.call() # kaller spawn_hole(), spawn_car() osv.
 			if step.delay > 0:
 				await get_tree().create_timer(step.delay).timeout
 			index += 1
 			
-			start_sequence()
+			start_sequence(Global.lives)
 
 
 func randomYPosOnLevel():
@@ -124,10 +128,6 @@ func spawner(y, scene):
 	
 
 var sequences = [
-
-
-	
-	
 	#first learning wave
 	[
 		{ "delay": 2, "action": func(): spawner(0, hole) },
@@ -135,65 +135,53 @@ var sequences = [
 		{ "delay": 2, "action": func(): spawner(0, hole) },
 		{ "delay": 2, "action": func(): spawner(100, hole) },
 	],
+	#second wave with toll station
 	[
-		#second learning wave with pickups
-		{ "delay": 2, "action": func(): spawner(100, hole) },
-		{ "delay": 2, "action": func(): spawner(0, hole) },
-		{ "delay": 2, "action": func(): spawner(100, hole) },
-		{ "delay": 2, "action": func(): spawner(0, hole) },
+		{ "delay": 1.5, "action": func(): spawner(randomYPosOnTrack(), hole) },
+		{ "delay": 1.5, "action": func(): spawner(randomYPosOnTrack(), hole) },
+		{ "delay": 1.5, "action": func(): spawner(randomYPosOnTrack(), hole) },
+		{ "delay": 1.5, "action": func(): spawner(randomYPosOnTrack(), hole) },
+		{ "delay": 2, "action": func(): spawner(40, toll_station) },
 		
-		{ "delay": 2, "action": func(): spawner(100, hole) },
-		{ "delay": 2, "action": func(): spawner(0, hole) },
-		
-		{ "delay": 2, "action": func(): spawner(100, hole) },
-		{ "delay": 2, "action": func(): spawner(0, hole) },
 	],
 	[
 	#third wave with more holes
-	{ "delay": 0.5, "action": func(): spawner(0, wall4) },
-	{ "delay": 0.5, "action": func(): spawner(200, wall4) },
-	{ "delay": 0.5, "action": func(): spawner(0, wall4) },
-	{ "delay": 0.5, "action": func(): spawner(200, wall4) },
-	{ "delay": 0.5, "action": func(): spawner(0, wall4) },
+	{ "delay": 1.5, "action": func(): spawner(0, wall4) },
+	{ "delay": 1.5, "action": func(): spawner(200, wall4) },
+	{ "delay": 1.5, "action": func(): spawner(0, wall4) },
+	{ "delay": 1.5, "action": func(): spawner(200, wall4) },
+	{ "delay": 1.5, "action": func(): spawner(0, wall4) },
 	{ "delay": 2, "action": func(): spawner(200, wall4) },
-	
 	{ "delay": 2, "action": func(): spawner(40, toll_station) },
+	{ "delay": 4, "action": func(): spawner(randomYPosOnTrack(), electric_car) },
 	],
-	#fourth wave
+	#fourth wave with wall
 	[
-	{ "delay": 0.2, "action": func(): spawner(0, bureaucrat) },
-	{ "delay": 2, "action": func(): spawner(100, hole) },
-	{ "delay": 2, "action": func(): spawner(0, wall4) },
-	{ "delay": 1, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 1, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 1, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 1, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 2, "action": func(): spawner(0, wall4) },
-	{ "delay": 2, "action": func(): spawner(200, wall4) },
-	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
-	{ "delay": 0.2, "action": func(): spawner(220, bureaucrat) },
-	{ "delay": 2, "action": func(): spawner(100, hole) },
-	{ "delay": 2, "action": func(): spawner(0, hole) },
-	{ "delay": 0.2, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 0.1, "action": func(): spawner(100, bureaucrat) },
+	{ "delay": 0.0, "action": func(): spawner(-120, hole) },
+	{ "delay": 0.0, "action": func(): spawner(-60, hole) },
+	{ "delay": 0.0, "action": func(): spawner(0, hole) },
+	{ "delay": 0.0, "action": func(): spawner(60, hole) },
+	{ "delay": 2.0, "action": func(): spawner(120, hole) },
+	{ "delay": 0.5, "action": func(): spawner(randomYPosOnTrack(), electric_car) },	
+
+	{ "delay": 1.5, "action": func(): spawner(0, wall4) },
+	{ "delay": 1.5, "action": func(): spawner(200, wall4) },
+	{ "delay": 2, "action": func(): spawner(40, toll_station) },
+	{ "delay": 0.5, "action": func(): spawner(randomYPosOnTrack(), electric_car) },
 	],
+	#fifth wave with electric cars
 	[
-	{ "delay": 0.0, "action": func(): spawner(-200, locale) },
-	{ "delay": 0.2, "action": func(): spawner(0, bureaucrat) },
-	{ "delay": 2, "action": func(): spawner(100, hole) },
-	{ "delay": 2, "action": func(): spawner(0, hole) },
-	{ "delay": 1, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 1, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 1, "action": func(): spawner(200, bureaucrat) },
-	{ "delay": 4, "action": func(): spawner(200, bureaucrat) },
-		#full wall
+	{ "delay": 0.0, "action": func(): spawner(randomYPosOnTrack(), electric_car) },
+	{ "delay": 0.5, "action": func(): spawner(randomYPosOnTrack(), electric_car) },	
+	{ "delay": 0.5, "action": func(): spawner(randomYPosOnTrack(), electric_car) },	
+	{ "delay": 0.5, "action": func(): spawner(randomYPosOnTrack(), electric_car) },	
+	{ "delay": 0.5, "action": func(): spawner(randomYPosOnTrack(), electric_car) },	
 	{ "delay": 0.0, "action": func(): spawner(-120, hole) },
 	{ "delay": 0.0, "action": func(): spawner(-60, hole) },
 	{ "delay": 0.0, "action": func(): spawner(0, hole) },
 	{ "delay": 0.0, "action": func(): spawner(60, hole) },
 	{ "delay": 0.0, "action": func(): spawner(120, hole) },
 	]
-	
 ]
 
 #var sequence_middle = [

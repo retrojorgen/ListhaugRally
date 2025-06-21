@@ -8,9 +8,10 @@ var is_jumping := false
 var previousSpeed := 600
 var speed := 600
 var lives := 4;
+
 var voters := 0;
 var waffles := 1;
-var collectedVoters = 0;
+var collectedVoters = 40;
 var maxCollectedVoters = 50;
 
 const BOTTOM_OF_TRACK = 200
@@ -21,3 +22,8 @@ const RIGHT_OF_TRACK = 420
 
 const TOP_OF_LEVEL = -200
 const BOTTOM_OF_LEVEL = 300
+
+# need to measure when the player restarts
+
+
+var turns = 0
