@@ -11,11 +11,17 @@ func _process(delta: float) -> void:
 		global_position.x -= Global.speed * delta
 
 	
-	
+func _ready():
+	randomize()
+	var random_number = randi_range(1, 2)
+	if random_number == 2:
+		$AnimatedSprite2D.play("dude")
+
+			
 func _on_body_entered(body: Node2D) -> void:
 	#print("hello")
 	if body.name == "Player" and !float_after_character_ready:
-		emit_signal("character")
+		emit_signal("character")	
 		body.voterCollision()
 		queue_free()
 	#pass # Replace with function body.

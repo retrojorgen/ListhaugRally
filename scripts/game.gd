@@ -135,8 +135,11 @@ func collectVoters():
 
 
 func init():
+	Global.speed = 0
 	background_music.stop()
 	background_music.play()
+	await get_tree().create_timer(1).timeout
+	Global.speed = Global.previousSpeed
 	scene_items_handler.init()
 	
 func _ready():

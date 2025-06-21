@@ -20,3 +20,4 @@ const RIGHT_OF_TRACK = 420
 
 
 const TOP_OF_LEVEL = -200
+const BOTTOM_OF_LEVEL = 300

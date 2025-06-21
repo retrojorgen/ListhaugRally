@@ -49,6 +49,7 @@ shape = SubResource("RectangleShape2D_iywne")
 [node name="ScoreKeeper" parent="." instance=ExtResource("5_iywne")]
 
 [node name="Player" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-345, 5)
 
 [node name="StopItemsRight" type="Area2D" parent="."]
 position = Vector2(985, 72)

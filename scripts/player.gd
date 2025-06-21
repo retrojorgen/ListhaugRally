@@ -20,7 +20,6 @@ var going_up := true
 @onready var explosionSound: AudioStreamPlayer = $Sounds/explosion
 @onready var powerupSound: AudioStreamPlayer = $Sounds/powerup
 @onready var hurtSound: AudioStreamPlayer = $Sounds/hurt
-@onready var coinSound: AudioStreamPlayer = $Sounds/coin
 
 
 
@@ -229,7 +228,7 @@ func _itemHit():
 
 func voterCollision():
 	_itemHit()
-	Sounds.coin.play()
+	Sounds.getRandomYahooSound().play()
 	
 	#car_sprite.play("withVoters")
 	GameScene.increaseVoters()
